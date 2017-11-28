@@ -1709,12 +1709,12 @@ var TryItContainer = function TryItContainer() {
         null,
         "URL shortener"
       ),
-      " got married."
+      " just got married."
     ),
     (0, _preact.h)(
       "p",
       null,
-      "Generate tiny QR codes of your web-pages"
+      "Generate tiny QR codes for your web-pages"
     ),
     (0, _preact.h)(_tryitForm2.default, null)
   );
