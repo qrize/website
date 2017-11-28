@@ -1,5 +1,5 @@
 // SCSS
-import "./scss/main.scss";
+import "./scss/imports.scss";
 
 // JS
 import "./js/main";

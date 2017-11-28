@@ -1,0 +1,105 @@
+.try-it {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  color: $base;
+  // https://uigradients.com/#SeaBlue
+  background: #2b5876;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #4e4376, #2b5876);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #4e4376, #2b5876); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: normal;
+    text-align: center;
+    margin: 1rem 0 0;
+
+    strong {
+      color: $secondary;
+      text-shadow: 1px 1px $primary;
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem;
+
+    &.has-qr {
+      #qr-target { display: block; }
+      #qr-placeholder { display: none; }
+    }
+
+    #qr-target { display: none; }
+    #qr-placeholder { display: block; }
+
+    #qr-placeholder {
+      img {
+        opacity: 0.05;
+      }
+    }
+
+    .qr-holder {
+      $padding: 25px;
+      $qr_size: 125px;
+      $size: $qr_size + $padding + $padding;
+
+      margin: 0;
+      padding: $padding;
+      width: $size;
+      height: $size;
+      background: white;
+    }
+
+    .input-group {
+      display: flex;
+      border: 0;
+      padding: 0;
+      margin: 0 0 2rem;
+      width: 800px;
+      height: 3rem;
+
+      .url-input {
+        flex: 1;
+        padding: 0 1rem;
+        outline: none;
+        border: 2px solid $neutral;
+        border-right: none;
+
+        &:focus {
+          border-color: $accent;
+        }
+      }
+
+      .submit-btn {
+        // reset
+        margin:0;
+        border:0;
+        padding: 0 1rem;
+        display:inline-block;
+        vertical-align:middle;
+        white-space:normal;
+        line-height:1;
+        outline: none;
+        // styling
+        cursor: pointer;
+        background-color: $accent;
+        color: $base;
+        text-transform: uppercase;
+
+        &:hover,
+        &:focus {
+          background-color: lighten($accent, 5%);
+        }
+
+        &:active {
+          background-color: darken($accent, 5%);
+        }
+      }
+    }
+  }
+}
+

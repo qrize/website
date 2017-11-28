@@ -12,7 +12,7 @@ const config = {
   devtool: "source-map",
   devServer: {
     contentBase: buildDir,
-    open: true,
+    open: false,
     inline: true,
     port: 8888
   },
@@ -31,7 +31,7 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "Change me in webpack.config.js",
+      title: "Qrize | Tiny QR codes for your web pages",
       hash: true,
       showErrors: true,
       template: "src/index.html"
