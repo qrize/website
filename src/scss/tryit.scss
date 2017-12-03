@@ -91,17 +91,17 @@
         -webkit-appearance: none;
         // styling
         cursor: pointer;
-        background-color: fade-out($accent, 0.5);
+        background-color: fade-out($accent, 0.2);
         color: $base;
         text-transform: uppercase;
 
         &:hover,
         &:focus {
-          background-color: fade-out($accent, 0.4);
+          background-color: fade-out($accent, 0.1);
         }
 
         &:active {
-          background-color: fade-out($accent, 0.6);
+          background-color: fade-out($accent, 0.3);
         }
       }
     }
