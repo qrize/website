@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
+  padding: 0 2rem;
   color: $base;
   // https://uigradients.com/#CrimsonTide
   background: #642B73;  /* fallback for old browsers */
@@ -14,7 +14,7 @@
     font-size: 2.5rem;
     font-weight: normal;
     text-align: center;
-    margin: 1rem 0 0;
+    margin: 4rem 0 0;
   }
 
   form {
@@ -33,7 +33,7 @@
       $size: $qr_size + $padding + $padding;
 
       display: none;
-      margin: 0;
+      margin: 4rem 0 0;
       padding: $padding;
       width: $size;
       height: $size;
