@@ -7,7 +7,10 @@ const TryItContainer = () => (
       <strong>QR code</strong> and <strong>URL shortener</strong> just got
       married.
     </h1>
-    <p>Generate tiny QR codes for your web-pages</p>
+    <p>
+      Generate <strong>tiny QR codes</strong> for your web-pages. Go check it
+      out:
+    </p>
     <TryItForm />
   </section>
 );

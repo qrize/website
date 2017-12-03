@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+@import url('https://fonts.googleapis.com/css?family=Rubik:300,400');
 
 html, body {
   margin: 0;
@@ -10,7 +10,7 @@ html, body {
 body {
   display: flex;
   font-size: 16px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Rubik', sans-serif;
   color: $primary;
 }
 
@@ -21,4 +21,9 @@ body {
 main {
   width: 100%;
   height: 100%;
+}
+
+strong {
+  color: $secondary;
+  text-shadow: 1px 1px $primary;
 }

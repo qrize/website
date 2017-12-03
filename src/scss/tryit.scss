@@ -5,75 +5,34 @@
   align-items: center;
   padding: 2rem;
   color: $base;
-  // https://uigradients.com/#SeaBlue
-  background: #2b5876;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #4e4376, #2b5876);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #4e4376, #2b5876); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  // https://uigradients.com/#CrimsonTide
+  background: #642B73;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #C6426E, #642B73);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #C6426E, #642B73); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   h1 {
     font-size: 2.5rem;
     font-weight: normal;
     text-align: center;
     margin: 1rem 0 0;
-
-    strong {
-      color: $secondary;
-      text-shadow: 1px 1px $primary;
-    }
   }
 
   form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 2rem;
+    margin: 4rem;
 
     &.has-qr {
       #qr-target { display: block; }
-      #qr-placeholder { display: none; }
     }
 
-    #qr-target { display: none; }
-    #qr-placeholder { display: block; }
-
-    #qr-placeholder {
-      position: relative;
-
-      &:hover {
-        .dummy-image {
-          filter: blur(3px);
-        }
-
-        .label {
-          opacity: 1;
-        }
-      }
-
-      .dummy-image {
-        opacity: 0.05;
-        transition: filter 300ms ease;
-      }
-
-      .label {
-        opacity: 0;
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 100%;
-        text-align: center;
-        color: lighten($secondary, 0%);
-        background-color: fade-out($base, 0.5);
-        transition: opacity 300ms ease;
-      }
-    }
-
-    .qr-holder {
+    #qr-target {
       $padding: 25px;
-      $qr_size: 135px;
+      $qr_size: 125px;
       $size: $qr_size + $padding + $padding;
-      border: 5px solid $secondary;
 
+      display: none;
       margin: 0;
       padding: $padding;
       width: $size;
@@ -85,20 +44,35 @@
       display: flex;
       border: 0;
       padding: 0;
-      margin: 0 0 2rem;
+      margin: 0;
       width: 80vw;
       max-width: 800px;
-      height: 3rem;
 
       .url-input {
         flex: 1;
-        padding: 0 1rem;
+        margin: 0;
+        padding: 1.2rem;
         outline: none;
-        border: 2px solid $secondary;
-        border-right: none;
+        border: 2px solid transparent;
+        color: $base;
+        border-radius: 0;
+        background-color: fade-out($base, 0.8);
+
+        &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+          color: fade-out($base, 0.5);
+        }
+        &::-moz-placeholder { /* Firefox 19+ */
+          color: fade-out($base, 0.5);
+        }
+        &:-ms-input-placeholder { /* IE 10+ */
+          color: fade-out($base, 0.5);
+        }
+        &:-moz-placeholder { /* Firefox 18- */
+          color: fade-out($base, 0.5);
+        }
 
         &:focus {
-          border-color: $accent;
+          border-color: fade-out($base, 0.9);
         }
       }
 
@@ -106,25 +80,28 @@
         // reset
         margin:0;
         border:0;
-        padding: 0 1rem;
+        padding: 1.2rem;
         display:inline-block;
         vertical-align:middle;
         white-space:normal;
         line-height:1;
         outline: none;
+        border: none;
+        border-radius: 0;
+        -webkit-appearance: none;
         // styling
         cursor: pointer;
-        background-color: $accent;
+        background-color: fade-out($accent, 0.5);
         color: $base;
         text-transform: uppercase;
 
         &:hover,
         &:focus {
-          background-color: lighten($accent, 5%);
+          background-color: fade-out($accent, 0.4);
         }
 
         &:active {
-          background-color: darken($accent, 5%);
+          background-color: fade-out($accent, 0.6);
         }
       }
     }
