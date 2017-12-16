@@ -37,10 +37,11 @@ class TryItForm extends Component {
       <form
         onSubmit={this.handleSubmit}
         className={this.state.hasQR ? "has-qr" : ""}
+        autocomplete="off"
       >
         <div role="group" className="input-group">
           <input
-            type="url"
+            type="text"
             name="url"
             className="url-input"
             placeholder="Paste a link"

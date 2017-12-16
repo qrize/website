@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Rubik:300,400');
 
+$trans-time: 100ms;
+$trans-func: ease-out;
+$trans: all $trans-time $trans-func;
+
 html, body {
   margin: 0;
   padding: 0;

@@ -8,8 +8,7 @@ const TryItContainer = () => (
       married.
     </h1>
     <p>
-      Generate <strong>tiny QR codes</strong> for your web-pages. Go check it
-      out:
+      Generate <strong>tiny QR codes</strong> for your web-pages. Check it out:
     </p>
     <TryItForm />
   </section>
