@@ -1,0 +1,103 @@
+form.tryit-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 4rem;
+
+  &.has-qr {
+    #qr-target { display: block; }
+  }
+
+  #qr-target {
+    $padding: 25px;
+    $qr_size: 125px;
+    $size: $qr_size + $padding + $padding;
+
+    display: none;
+    margin: 4rem 0 0;
+    padding: $padding;
+    width: $size;
+    height: $size;
+    background: white;
+  }
+
+  .input-group {
+    $border-radius: 0.15rem;
+
+    display: flex;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    width: 80vw;
+    max-width: 800px;
+
+    .url-input {
+      flex: 1;
+      margin: 0;
+      padding: 1rem;
+      outline: none;
+      border: 1px solid transparent;
+      color: $base;
+      border-radius: $border-radius 0 0 $border-radius;
+      background-color: fade-out($base, 0.8);
+      transition: all 100ms ease-out;
+
+      &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: fade-out($base, 0.35);
+      }
+      &::-moz-placeholder { /* Firefox 19+ */
+        color: fade-out($base, 0.35);
+      }
+      &:-ms-input-placeholder { /* IE 10+ */
+        color: fade-out($base, 0.35);
+      }
+      &:-moz-placeholder { /* Firefox 18- */
+        color: fade-out($base, 0.5);
+      }
+
+      &:focus {
+        background-color: fade-out($base, 0.75);
+      }
+    }
+
+    .submit-btn {
+      // reset
+      margin:0;
+      border:0;
+      padding: 1.2rem;
+      display:inline-block;
+      vertical-align:middle;
+      white-space:normal;
+      line-height:1;
+      outline: none;
+      border-radius: 0;
+      -webkit-appearance: none;
+      // styling
+      cursor: pointer;
+      border: 1px solid transparent;
+      background-color: fade-out($primary, 0);
+      color: $base;
+      text-transform: uppercase;
+      border-radius: 0 $border-radius $border-radius 0;
+      transition: all 100ms ease-out;
+
+      &:hover,
+      &:focus {
+        background-color: fade-out($primary, 0.15);
+      }
+
+      &:focus {
+        box-shadow: inset 0 0 0 1px fade-out($base, 0.5);
+      }
+      &:focus:hover:not(:active) {
+        box-shadow: inset 0 0 0 1px fade-out($base, 0.35);
+      }
+
+      &:active {
+        box-shadow: unset;
+        background-color: fade-out($primary, 0);
+      }
+    }
+  }
+}
+

@@ -36,7 +36,7 @@ class TryItForm extends Component {
     return (
       <form
         onSubmit={this.handleSubmit}
-        className={this.state.hasQR ? "has-qr" : ""}
+        className={`tryit-form ${this.state.hasQR ? "has-qr" : ""}`}
         autocomplete="off"
       >
         <div role="group" className="input-group">
