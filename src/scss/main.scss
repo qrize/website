@@ -39,7 +39,6 @@ button,
 input[type=button],
 input[type=submit] {
   // reset button styles
-  cursor: pointer;
   margin:0;
   border:0;
   padding: 0;
@@ -51,4 +50,8 @@ input[type=submit] {
   border-radius: 0;
   background: transparent;
   -webkit-appearance: none;
+
+  &:not(:disabled) {
+    cursor: pointer;
+  }
 }

@@ -112,7 +112,7 @@ form.tryit-form {
         margin-left: 0.3em;
       }
 
-      &:hover,
+      &:hover:not(:disabled),
       &:focus {
         background-color: fade-out($primary, 0.15);
       }

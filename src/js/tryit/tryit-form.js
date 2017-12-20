@@ -81,7 +81,11 @@ class TryItForm extends Component {
             dangerouslySetInnerHTML={iconHtml("x", { "stroke-width": 1 })}
           />
           {/* submit button */}
-          <button type="submit" className="submit-btn">
+          <button
+            type="submit"
+            className="submit-btn"
+            disabled={this.state.hasQR}
+          >
             {this.state.hasQR
               ? [
                   <span
