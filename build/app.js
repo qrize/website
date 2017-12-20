@@ -1802,6 +1802,7 @@ var TryItForm = function (_Component) {
     key: "handleReset",
     value: function handleReset() {
       this.setState({ url: "", hasQR: false });
+      this.urlInput.focus();
     }
   }, {
     key: "handleSubmit",
@@ -1828,6 +1829,8 @@ var TryItForm = function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this4 = this;
+
       return (0, _preact.h)(
         "form",
         {
@@ -1843,6 +1846,9 @@ var TryItForm = function (_Component) {
             name: "url",
             className: "url-input",
             placeholder: "Paste a link",
+            ref: function ref(input) {
+              _this4.urlInput = input;
+            },
             value: this.state.url,
             onInput: this.handleInput,
             onPaste: this.handlePaste,

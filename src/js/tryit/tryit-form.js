@@ -32,6 +32,7 @@ class TryItForm extends Component {
 
   handleReset() {
     this.setState({ url: "", hasQR: false });
+    this.urlInput.focus();
   }
 
   handleSubmit(event) {
@@ -66,6 +67,9 @@ class TryItForm extends Component {
             name="url"
             className="url-input"
             placeholder="Paste a link"
+            ref={input => {
+              this.urlInput = input;
+            }}
             value={this.state.url}
             onInput={this.handleInput}
             onPaste={this.handlePaste}
