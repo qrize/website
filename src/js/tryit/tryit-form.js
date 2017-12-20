@@ -69,7 +69,7 @@ class TryItForm extends Component {
             value={this.state.url}
             onInput={this.handleInput}
             onPaste={this.handlePaste}
-            spellcheck="false"
+            spellCheck="false"
             autofocus
             required
           />
