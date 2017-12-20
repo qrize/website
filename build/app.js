@@ -1854,7 +1854,9 @@ var TryItForm = function (_Component) {
             type: "button",
             onClick: this.handleReset,
             className: "reset-btn " + (this.state.url.length > 0 ? "show" : ""),
-            dangerouslySetInnerHTML: (0, _icon2.default)("x", { "stroke-width": 1 })
+            dangerouslySetInnerHTML: (0, _icon2.default)("x", { "stroke-width": 1 }),
+            title: "Clear input",
+            "aria-label": "Clear input"
           }),
           (0, _preact.h)(
             "button",
@@ -1864,6 +1866,7 @@ var TryItForm = function (_Component) {
               disabled: this.state.hasQR
             },
             this.state.hasQR ? [(0, _preact.h)("span", {
+              "aria-hidden": "true",
               dangerouslySetInnerHTML: (0, _icon2.default)("check", {
                 "stroke-width": 1
               })

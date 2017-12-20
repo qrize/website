@@ -79,6 +79,8 @@ class TryItForm extends Component {
             onClick={this.handleReset}
             className={`reset-btn ${this.state.url.length > 0 ? "show" : ""}`}
             dangerouslySetInnerHTML={iconHtml("x", { "stroke-width": 1 })}
+            title="Clear input"
+            aria-label="Clear input"
           />
           {/* submit button */}
           <button
@@ -89,6 +91,7 @@ class TryItForm extends Component {
             {this.state.hasQR
               ? [
                   <span
+                    aria-hidden="true"
                     dangerouslySetInnerHTML={iconHtml("check", {
                       "stroke-width": 1
                     })}
