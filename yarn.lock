@@ -2313,7 +2313,7 @@ fbjs@^0.8.16:
     setimmediate "^1.0.5"
     ua-parser-js "^0.7.9"
 
-feather-icons@^4.4.0:
+feather-icons@4.4.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/feather-icons/-/feather-icons-4.4.0.tgz#ccc56ee807aab00f0a78368875378fb972d1ba34"
   dependencies:
@@ -2331,6 +2331,13 @@ file-entry-cache@^2.0.0:
   dependencies:
     flat-cache "^1.2.1"
     object-assign "^4.0.1"
+
+file-loader@^1.1.6:
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-1.1.6.tgz#7b9a8f2c58f00a77fddf49e940f7ac978a3ea0e8"
+  dependencies:
+    loader-utils "^1.0.2"
+    schema-utils "^0.3.0"
 
 filename-regex@^2.0.0:
   version "2.0.1"

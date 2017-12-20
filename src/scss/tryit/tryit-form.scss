@@ -18,13 +18,15 @@ form.tryit-form {
     padding: $padding;
     width: $size;
     height: $size;
-    background: white;
+    background: $base;
   }
 
   .input-group {
     $border-radius: 0.15rem;
+    $submit-btn-width: 8rem;
 
     display: flex;
+    position: relative;
     border: 0;
     padding: 0;
     margin: 0;
@@ -35,13 +37,13 @@ form.tryit-form {
     .url-input {
       flex: 1;
       margin: 0;
-      padding: 1rem;
+      padding: 1rem 2.5rem 1rem 1rem;
       outline: none;
       border: 1px solid transparent;
       color: $base;
       border-radius: $border-radius 0 0 $border-radius;
       background-color: fade-out($base, 0.8);
-      transition: all 100ms ease-out;
+      transition: $trans;
 
       &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
         color: fade-out($base, 0.35);
@@ -61,26 +63,54 @@ form.tryit-form {
       }
     }
 
+    .reset-btn {
+      position: absolute;
+      right: $submit-btn-width;
+      top: 50%;
+      width: 1.5rem;
+      height: 1.5rem;
+      margin-right: 0.5rem;
+      opacity: 0;
+      transform: translateY(-50%);
+      transition: $trans;
+
+      &.show {
+        opacity: 0.9;
+
+        &:hover,
+        &:focus {
+          opacity: 0.75;
+        }
+
+        &:focus {
+          box-shadow: inset 0 0 0 1px fade-out($base, 0.5);
+        }
+        &:focus:hover:not(:active) {
+          box-shadow: inset 0 0 0 1px fade-out($base, 0.35);
+        }
+
+        &:active {
+          box-shadow: unset;
+          opacity: 0.9;
+        }
+      }
+    }
+
     .submit-btn {
-      // reset
-      margin:0;
-      border:0;
-      padding: 1.2rem;
-      display:inline-block;
-      vertical-align:middle;
-      white-space:normal;
-      line-height:1;
-      outline: none;
-      border-radius: 0;
-      -webkit-appearance: none;
-      // styling
-      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: $submit-btn-width;
       border: 1px solid transparent;
       background-color: fade-out($primary, 0);
       color: $base;
       text-transform: uppercase;
       border-radius: 0 $border-radius $border-radius 0;
-      transition: all 100ms ease-out;
+      transition: $trans;
+
+      > *:not(:first-child) {
+        margin-left: 0.3em;
+      }
 
       &:hover,
       &:focus {

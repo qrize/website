@@ -4,6 +4,13 @@ $trans-time: 100ms;
 $trans-func: ease-out;
 $trans: all $trans-time $trans-func;
 
+* {
+  box-sizing: border-box;
+  font-family: inherit;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -18,10 +25,6 @@ body {
   color: $primary;
 }
 
-* {
-  box-sizing: border-box;
-}
-
 main {
   width: 100%;
   height: 100%;
@@ -30,4 +33,22 @@ main {
 strong {
   color: $neutral;
   text-shadow: 1px 1px $primary;
+}
+
+button,
+input[type=button],
+input[type=submit] {
+  // reset button styles
+  cursor: pointer;
+  margin:0;
+  border:0;
+  padding: 0;
+  display:inline-block;
+  vertical-align:middle;
+  white-space:normal;
+  line-height:1;
+  outline: none;
+  border-radius: 0;
+  background: transparent;
+  -webkit-appearance: none;
 }

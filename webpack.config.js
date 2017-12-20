@@ -26,6 +26,16 @@ const config = {
       {
         test: /\.(css|scss|sass)$/,
         loader: ["style-loader", "css-loader", "postcss-loader", "sass-loader"]
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        include: path.resolve(__dirname, "./node_modules/feather-icons/dist/"),
+        use: [
+          {
+            loader: "file-loader",
+            options: {}
+          }
+        ]
       }
     ]
   },
