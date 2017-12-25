@@ -1093,7 +1093,7 @@ exports = module.exports = __webpack_require__(4)(undefined);
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Rubik:300,400);", ""]);
 
 // module
-exports.push([module.i, "/* Coolors Exported Palette - coolors.co/ffffff-231f20-bb4430-7ebdc2-f3dfa2 */\n/* RGB */\n* {\n  box-sizing: border-box;\n  font-family: inherit;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale; }\n\nhtml, body {\n  margin: 0;\n  padding: 0;\n  height: 100%;\n  background-color: white; }\n\nbody {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  font-size: 16px;\n  font-family: 'Rubik', sans-serif;\n  color: #231f20; }\n\nmain {\n  width: 100%;\n  height: 100%; }\n\nstrong {\n  color: #f3dfa2;\n  text-shadow: 1px 1px #231f20; }\n\nbutton,\ninput[type=button],\ninput[type=submit] {\n  margin: 0;\n  border: 0;\n  padding: 0;\n  display: inline-block;\n  vertical-align: middle;\n  white-space: normal;\n  line-height: 1;\n  outline: none;\n  border-radius: 0;\n  background: transparent;\n  -webkit-appearance: none; }\n  button:not(:disabled),\n  input[type=button]:not(:disabled),\n  input[type=submit]:not(:disabled) {\n    cursor: pointer; }\n\n.try-it {\n  width: 100%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 0 2rem;\n  color: white;\n  background: #2c6e82;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #28638a, #2e7779);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }\n  .try-it h1 {\n    font-size: 2.5rem;\n    font-weight: normal;\n    text-align: center;\n    margin: 4rem 0 0; }\n\nform.tryit-form {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  margin: 4rem; }\n  form.tryit-form.has-qr #qr-target {\n    display: block; }\n  form.tryit-form #qr-target {\n    display: none;\n    margin: 4rem 0 0;\n    padding: 25px;\n    width: 175px;\n    height: 175px;\n    background: white; }\n  form.tryit-form .input-group {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    position: relative;\n    border: 0;\n    padding: 0;\n    margin: 0;\n    width: 80vw;\n    max-width: 800px;\n    box-shadow: 0 10px 20px -10px rgba(35, 31, 32, 0.3); }\n    form.tryit-form .input-group .url-input {\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n      margin: 0;\n      padding: 1rem 2.5rem 1rem 1rem;\n      outline: none;\n      border: 1px solid transparent;\n      color: white;\n      border-radius: 0.15rem 0 0 0.15rem;\n      background-color: rgba(255, 255, 255, 0.2);\n      transition: all 100ms ease-out; }\n      form.tryit-form .input-group .url-input::-webkit-input-placeholder {\n        /* Chrome/Opera/Safari */\n        color: rgba(255, 255, 255, 0.65); }\n      form.tryit-form .input-group .url-input::-moz-placeholder {\n        /* Firefox 19+ */\n        color: rgba(255, 255, 255, 0.65); }\n      form.tryit-form .input-group .url-input:-ms-input-placeholder {\n        /* IE 10+ */\n        color: rgba(255, 255, 255, 0.65); }\n      form.tryit-form .input-group .url-input:-moz-placeholder {\n        /* Firefox 18- */\n        color: rgba(255, 255, 255, 0.5); }\n      form.tryit-form .input-group .url-input:focus {\n        background-color: rgba(255, 255, 255, 0.25); }\n    form.tryit-form .input-group .reset-btn {\n      position: absolute;\n      right: 8rem;\n      top: 50%;\n      width: 1.5rem;\n      height: 1.5rem;\n      margin-right: 0.5rem;\n      opacity: 0;\n      -webkit-transform: translateY(-50%);\n              transform: translateY(-50%);\n      transition: all 100ms ease-out; }\n      form.tryit-form .input-group .reset-btn.show {\n        opacity: 0.9; }\n        form.tryit-form .input-group .reset-btn.show:hover, form.tryit-form .input-group .reset-btn.show:focus {\n          opacity: 0.75; }\n        form.tryit-form .input-group .reset-btn.show:focus {\n          box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5); }\n        form.tryit-form .input-group .reset-btn.show:focus:hover:not(:active) {\n          box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.65); }\n        form.tryit-form .input-group .reset-btn.show:active {\n          box-shadow: unset;\n          opacity: 0.9; }\n    form.tryit-form .input-group .submit-btn {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      width: 8rem;\n      border: 1px solid transparent;\n      background-color: #231f20;\n      color: white;\n      text-transform: uppercase;\n      border-radius: 0 0.15rem 0.15rem 0;\n      transition: all 100ms ease-out; }\n      form.tryit-form .input-group .submit-btn > *:not(:first-child) {\n        margin-left: 0.3em; }\n      form.tryit-form .input-group .submit-btn:hover:not(:disabled), form.tryit-form .input-group .submit-btn:focus {\n        background-color: rgba(35, 31, 32, 0.85); }\n      form.tryit-form .input-group .submit-btn:focus {\n        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5); }\n      form.tryit-form .input-group .submit-btn:focus:hover:not(:active) {\n        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.65); }\n      form.tryit-form .input-group .submit-btn:active {\n        box-shadow: unset;\n        background-color: #231f20; }\n", ""]);
+exports.push([module.i, "/* Coolors Exported Palette - coolors.co/ffffff-231f20-bb4430-7ebdc2-f3dfa2 */\n/* RGB */\n* {\n  box-sizing: border-box;\n  font-family: inherit;\n  font-size: inherit;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale; }\n\nhtml, body {\n  margin: 0;\n  padding: 0;\n  height: 100%;\n  font-size: 16px;\n  background-color: white; }\n\nbody {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  font-family: 'Rubik', Arial, sans-serif;\n  color: #231f20; }\n\nmain {\n  width: 100%;\n  height: 100%; }\n\nstrong {\n  color: #f3dfa2;\n  text-shadow: 1px 1px #231f20; }\n\nbutton,\ninput[type=button],\ninput[type=submit] {\n  margin: 0;\n  border: 0;\n  padding: 0;\n  display: inline-block;\n  vertical-align: middle;\n  white-space: normal;\n  line-height: 1;\n  outline: none;\n  border-radius: 0;\n  background: transparent;\n  -webkit-appearance: none; }\n  button:not(:disabled),\n  input[type=button]:not(:disabled),\n  input[type=submit]:not(:disabled) {\n    cursor: pointer; }\n\n.try-it {\n  width: 100%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 0 2rem 4rem;\n  color: white;\n  background: #2c6e82;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #28638a, #2e7779);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }\n  .try-it h1 {\n    font-size: 2.5rem;\n    font-weight: normal;\n    text-align: center;\n    margin: 4rem 0 0; }\n\nform.tryit-form {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  margin: 4rem 4rem 0; }\n  form.tryit-form .input-group {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    position: relative;\n    border: 0;\n    padding: 0;\n    margin: 0 0 4rem;\n    width: 80vw;\n    max-width: 800px;\n    font-size: 0.8rem;\n    box-shadow: 0 10px 20px -10px rgba(35, 31, 32, 0.3); }\n    form.tryit-form .input-group .url-input {\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n      margin: 0;\n      padding: 1rem 2.5rem 1rem 1rem;\n      outline: none;\n      border: 1px solid transparent;\n      color: white;\n      border-radius: 0.15rem 0 0 0.15rem;\n      background-color: rgba(255, 255, 255, 0.2);\n      transition: all 100ms ease-out; }\n      form.tryit-form .input-group .url-input::-webkit-input-placeholder {\n        /* Chrome/Opera/Safari */\n        color: rgba(255, 255, 255, 0.65); }\n      form.tryit-form .input-group .url-input::-moz-placeholder {\n        /* Firefox 19+ */\n        color: rgba(255, 255, 255, 0.65); }\n      form.tryit-form .input-group .url-input:-ms-input-placeholder {\n        /* IE 10+ */\n        color: rgba(255, 255, 255, 0.65); }\n      form.tryit-form .input-group .url-input:-moz-placeholder {\n        /* Firefox 18- */\n        color: rgba(255, 255, 255, 0.5); }\n      form.tryit-form .input-group .url-input:focus {\n        background-color: rgba(255, 255, 255, 0.25); }\n    form.tryit-form .input-group .reset-btn {\n      position: absolute;\n      right: 8rem;\n      top: 50%;\n      width: 1.5rem;\n      height: 1.5rem;\n      margin-right: 0.5rem;\n      opacity: 0;\n      -webkit-transform: translateY(-50%);\n              transform: translateY(-50%);\n      transition: all 100ms ease-out; }\n      form.tryit-form .input-group .reset-btn.show {\n        opacity: 0.9; }\n        form.tryit-form .input-group .reset-btn.show:hover, form.tryit-form .input-group .reset-btn.show:focus {\n          opacity: 0.75; }\n        form.tryit-form .input-group .reset-btn.show:focus {\n          box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5); }\n        form.tryit-form .input-group .reset-btn.show:focus:hover:not(:active) {\n          box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.65); }\n        form.tryit-form .input-group .reset-btn.show:active {\n          box-shadow: unset;\n          opacity: 0.9; }\n    form.tryit-form .input-group .submit-btn {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      width: 8rem;\n      border: 1px solid transparent;\n      background-color: #231f20;\n      color: white;\n      text-transform: uppercase;\n      border-radius: 0 0.15rem 0.15rem 0;\n      transition: all 100ms ease-out; }\n      form.tryit-form .input-group .submit-btn > *:not(:first-child) {\n        margin-left: 0.3em; }\n      form.tryit-form .input-group .submit-btn:hover:not(:disabled), form.tryit-form .input-group .submit-btn:focus {\n        background-color: rgba(35, 31, 32, 0.85); }\n      form.tryit-form .input-group .submit-btn:focus {\n        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5); }\n      form.tryit-form .input-group .submit-btn:focus:hover:not(:active) {\n        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.65); }\n      form.tryit-form .input-group .submit-btn:active {\n        box-shadow: unset;\n        background-color: #231f20; }\n    form.tryit-form .input-group .error {\n      position: absolute;\n      top: 100%;\n      left: 50%;\n      -webkit-transform: translateX(-50%);\n              transform: translateX(-50%);\n      padding: 0.4rem;\n      font-size: 1rem;\n      border-radius: 0.15rem;\n      background: #bb4430;\n      margin-top: 20px;\n      opacity: 0; }\n      form.tryit-form .input-group .error.show {\n        transition: all 100ms ease-out;\n        margin-top: 6px;\n        opacity: 1; }\n      form.tryit-form .input-group .error::after {\n        content: \"\";\n        position: absolute;\n        bottom: 100%;\n        left: 50%;\n        margin-left: -3px;\n        width: 0;\n        height: 0;\n        border-left: 6px solid transparent;\n        border-right: 6px solid transparent;\n        border-bottom: 6px solid #bb4430; }\n\n#qr-target {\n  display: none;\n  padding: 25px;\n  margin: 0;\n  width: 175px;\n  height: 175px;\n  background: white; }\n  #qr-target.show {\n    display: block; }\n", ""]);
 
 // exports
 
@@ -1759,6 +1759,17 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+// See: https://github.com/qrize/qrize/blob/master/src/validators.js
+var urlRegExp = {
+  shema: /((?:http|ftp)s?:\/\/)/,
+  domain: /(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+(?:[A-Z]{2,6}\.?|[A-Z0-9-]{2,}\.?)/,
+  ip: /\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/,
+  port: /(?::\d+)/,
+  query: /(?:\/?|[/?]\S+)/
+};
+
+urlRegExp.composed = new RegExp("^" + urlRegExp.shema.source + "?" + ("(?:" + urlRegExp.domain.source + "|localhost|" + urlRegExp.ip.source + ")") + (urlRegExp.port.source + "?") + (urlRegExp.query.source + "$"), "i");
+
 var TryItForm = function (_Component) {
   _inherits(TryItForm, _Component);
 
@@ -1767,7 +1778,7 @@ var TryItForm = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (TryItForm.__proto__ || Object.getPrototypeOf(TryItForm)).call(this));
 
-    _this.state = { url: "", hasQR: false, time: null };
+    _this.state = { url: "", errorMessage: "", hasQR: false, time: null };
 
     _this.handleInput = _this.handleInput.bind(_this);
     _this.handlePaste = _this.handlePaste.bind(_this);
@@ -1787,7 +1798,7 @@ var TryItForm = function (_Component) {
   }, {
     key: "handleInput",
     value: function handleInput(event) {
-      this.setState({ url: event.target.value, hasQR: false });
+      this.setState({ url: event.target.value, errorMessage: "", hasQR: false });
     }
   }, {
     key: "handlePaste",
@@ -1795,13 +1806,15 @@ var TryItForm = function (_Component) {
       var _this2 = this;
 
       setTimeout(function () {
-        _this2.getQR();
+        if (_this2.isUrlValid()) {
+          _this2.getQR();
+        }
       }, 0);
     }
   }, {
     key: "handleReset",
     value: function handleReset() {
-      this.setState({ url: "", hasQR: false });
+      this.setState({ url: "", errorMessage: "", hasQR: false });
       this.urlInput.focus();
     }
   }, {
@@ -1811,20 +1824,43 @@ var TryItForm = function (_Component) {
       this.getQR();
     }
   }, {
+    key: "isUrlValid",
+    value: function isUrlValid() {
+      return urlRegExp.composed.test(this.state.url);
+    }
+  }, {
     key: "getQR",
     value: function getQR() {
       var _this3 = this;
 
+      if (!this.state.url) {
+        this.showErrorMessage("Please, provide a link");
+        return;
+      }
+      if (!this.isUrlValid()) {
+        this.showErrorMessage("Unable to qrize this link. It is not a valid url");
+        return;
+      }
       var startTime = performance.now();
       this.qrize.createImg({
         url: this.state.url,
         onSuccess: function onSuccess() {
           console.debug("QR code has been built");
           _this3.setState({
-            hasQR: true
+            hasQR: true,
+            time: performance.now() - startTime
           });
+        },
+        onFailure: function onFailure(errorStatus, errorText) {
+          _this3.showErrorMessage("API error (" + errorStatus + "): " + errorText);
         }
       });
+    }
+  }, {
+    key: "showErrorMessage",
+    value: function showErrorMessage(errorMessage) {
+      this.setState({ errorMessage: errorMessage });
+      console.debug(errorMessage);
     }
   }, {
     key: "render",
@@ -1853,8 +1889,7 @@ var TryItForm = function (_Component) {
             onInput: this.handleInput,
             onPaste: this.handlePaste,
             spellCheck: "false",
-            autofocus: true,
-            required: true
+            autofocus: true
           }),
           (0, _preact.h)("button", {
             type: "button",
@@ -1881,9 +1916,17 @@ var TryItForm = function (_Component) {
               null,
               "Done"
             )] : "Get QR code"
+          ),
+          (0, _preact.h)(
+            "div",
+            { "class": "error " + (this.state.errorMessage && "show") },
+            this.state.errorMessage
           )
         ),
-        (0, _preact.h)("figure", { id: "qr-target", className: "qr-holder" })
+        (0, _preact.h)("figure", {
+          id: "qr-target",
+          className: "qr-holder " + (this.state.hasQR ? "show" : "")
+        })
       );
     }
   }]);

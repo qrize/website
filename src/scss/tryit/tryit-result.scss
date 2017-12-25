@@ -1,0 +1,16 @@
+#qr-target {
+  $padding: 25px;
+  $qr_size: 125px;
+  $size: $qr_size + $padding + $padding;
+
+  display: none;
+  padding: $padding;
+  margin: 0;
+  width: $size;
+  height: $size;
+  background: $base;
+
+  &.show {
+    display: block;
+  }
+}

@@ -2,24 +2,7 @@ form.tryit-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 4rem;
-
-  &.has-qr {
-    #qr-target { display: block; }
-  }
-
-  #qr-target {
-    $padding: 25px;
-    $qr_size: 125px;
-    $size: $qr_size + $padding + $padding;
-
-    display: none;
-    margin: 4rem 0 0;
-    padding: $padding;
-    width: $size;
-    height: $size;
-    background: $base;
-  }
+  margin: 4rem 4rem 0;
 
   .input-group {
     $border-radius: 0.15rem;
@@ -29,9 +12,10 @@ form.tryit-form {
     position: relative;
     border: 0;
     padding: 0;
-    margin: 0;
+    margin: 0 0 4rem;
     width: 80vw;
     max-width: 800px;
+    font-size: 0.8rem;
     box-shadow: 0 10px 20px -10px fade-out($primary, 0.7);
 
     .url-input {
@@ -127,6 +111,40 @@ form.tryit-form {
       &:active {
         box-shadow: unset;
         background-color: fade-out($primary, 0);
+      }
+    }
+
+    .error {
+      $arrow_size: 6px;
+
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 0.4rem;
+      font-size: 1rem;
+      border-radius: $border-radius;
+      background: $accent;
+      margin-top: 20px;
+      opacity: 0;
+
+      &.show {
+        transition: $trans;
+        margin-top: 6px;
+        opacity: 1;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        margin-left: $arrow_size / -2;
+        width: 0;
+        height: 0;
+        border-left: $arrow_size solid transparent;
+        border-right: $arrow_size solid transparent;
+        border-bottom: $arrow_size solid $accent;
       }
     }
   }
