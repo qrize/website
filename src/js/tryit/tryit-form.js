@@ -131,17 +131,19 @@ class TryItForm extends Component {
             className="submit-btn"
             disabled={this.state.hasQR}
           >
-            {this.state.hasQR
-              ? [
-                  <span
-                    aria-hidden="true"
-                    dangerouslySetInnerHTML={iconHtml("check", {
-                      "stroke-width": 1
-                    })}
-                  />,
-                  <span>Done</span>
-                ]
-              : "Get QR code"}
+            <span className="button-content">
+              {this.state.hasQR
+                ? [
+                    <span
+                      aria-hidden="true"
+                      dangerouslySetInnerHTML={iconHtml("check", {
+                        "stroke-width": 1
+                      })}
+                    />,
+                    <span>Done</span>
+                  ]
+                : "Get QR code"}
+            </span>
           </button>
           {/* error message */}
           <div class={`error ${this.state.errorMessage && "show"}`}>

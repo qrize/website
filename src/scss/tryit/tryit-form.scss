@@ -81,20 +81,12 @@ form.tryit-form {
     }
 
     .submit-btn {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: $submit-btn-width;
       border: 1px solid transparent;
-      background-color: fade-out($primary, 0);
       color: $base;
       text-transform: uppercase;
+      background-color: fade-out($primary, 0);
       border-radius: 0 $border-radius $border-radius 0;
       transition: $trans;
-
-      > *:not(:first-child) {
-        margin-left: 0.3em;
-      }
 
       &:hover:not(:disabled),
       &:focus {
@@ -111,6 +103,18 @@ form.tryit-form {
       &:active {
         box-shadow: unset;
         background-color: fade-out($primary, 0);
+      }
+    }
+
+    // Use a child element, because safari can't use flex with <button>
+    .submit-btn .button-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: $submit-btn-width;
+
+      > *:not(:first-child) {
+        margin-left: 0.3em;
       }
     }
 
