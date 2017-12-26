@@ -1,6 +1,6 @@
 import { h, Component } from "preact";
-import Qrize from "qrize";
 import iconHtml from "../icon";
+import TryItResult from "./tryit-result";
 
 // See: https://github.com/qrize/qrize/blob/master/src/validators.js
 const urlRegExp = {
@@ -19,10 +19,14 @@ urlRegExp.composed = new RegExp(
   "i"
 );
 
+function isUrlValid(url) {
+  return urlRegExp.composed.test(url);
+}
+
 class TryItForm extends Component {
   constructor() {
     super();
-    this.state = { url: "", errorMessage: "", hasQR: false, time: null };
+    this.state = { url: "", input: "", errorMessage: "", hasQR: false };
 
     this.handleInput = this.handleInput.bind(this);
     this.handlePaste = this.handlePaste.bind(this);
@@ -30,27 +34,25 @@ class TryItForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount() {
-    this.qrize = new Qrize({
-      element: document.getElementById("qr-target"),
-      cellSize: 5
+  handleInput(event) {
+    this.setState({
+      input: event.target.value,
+      url: "",
+      errorMessage: ""
     });
   }
 
-  handleInput(event) {
-    this.setState({ url: event.target.value, errorMessage: "", hasQR: false });
-  }
-
   handlePaste() {
+    // let input event change state first, then get QR code
     setTimeout(() => {
-      if (this.isUrlValid()) {
+      if (isUrlValid(this.state.input)) {
         this.getQR();
       }
     }, 0);
   }
 
   handleReset() {
-    this.setState({ url: "", errorMessage: "", hasQR: false });
+    this.setState({ input: "", url: "", errorMessage: "" });
     this.urlInput.focus();
   }
 
@@ -59,38 +61,27 @@ class TryItForm extends Component {
     this.getQR();
   }
 
-  isUrlValid() {
-    return urlRegExp.composed.test(this.state.url);
-  }
-
   getQR() {
-    if (!this.state.url) {
+    if (!this.state.input) {
       this.showErrorMessage("Please, provide a link");
       return;
     }
-    if (!this.isUrlValid()) {
+    if (!isUrlValid(this.state.input)) {
       this.showErrorMessage("Unable to qrize this link. It is not a valid url");
       return;
     }
-    const startTime = performance.now();
-    this.qrize.createImg({
-      url: this.state.url,
-      onSuccess: () => {
-        console.debug("QR code has been built");
-        this.setState({
-          hasQR: true,
-          time: performance.now() - startTime
-        });
-      },
-      onFailure: (errorStatus, errorText) => {
-        this.showErrorMessage(`API error (${errorStatus}): ${errorText}`);
-      }
-    });
+    this.setState({ url: this.state.input }); // pass url to TryitResult
   }
 
   showErrorMessage(errorMessage) {
     this.setState({ errorMessage });
-    console.debug(errorMessage);
+  }
+
+  handleQRStatusUpdate(error) {
+    const errorMessage = error
+      ? `API error ${error.errorStatus}: ${error.errorText}`
+      : "";
+    this.showErrorMessage(errorMessage);
   }
 
   render() {
@@ -110,7 +101,7 @@ class TryItForm extends Component {
             ref={input => {
               this.urlInput = input;
             }}
-            value={this.state.url}
+            value={this.state.input}
             onInput={this.handleInput}
             onPaste={this.handlePaste}
             spellCheck="false"
@@ -120,7 +111,7 @@ class TryItForm extends Component {
           <button
             type="button"
             onClick={this.handleReset}
-            className={`reset-btn ${this.state.url.length > 0 ? "show" : ""}`}
+            className={`reset-btn ${this.state.input.length > 0 ? "show" : ""}`}
             dangerouslySetInnerHTML={iconHtml("x", { "stroke-width": 1 })}
             title="Clear input"
             aria-label="Clear input"
@@ -150,10 +141,10 @@ class TryItForm extends Component {
             {this.state.errorMessage}
           </div>
         </div>
-        {/* real QR code */}
-        <figure
-          id="qr-target"
-          className={`qr-holder ${this.state.hasQR ? "show" : ""}`}
+        {/* QR code */}
+        <TryItResult
+          url={this.state.url}
+          onQRStatusUpdate={this.handleQRStatusUpdate.bind(this)}
         />
       </form>
     );
