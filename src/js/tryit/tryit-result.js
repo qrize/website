@@ -20,6 +20,7 @@ class TryItResult extends Component {
     }
     if (!nextProps.url) {
       this.setState({ visible: false });
+      this.props.onQRStatusUpdate(null);
     } else {
       this.getQR(nextProps.url);
     }
@@ -35,7 +36,7 @@ class TryItResult extends Component {
           visible: true,
           time: performance.now() - startTime
         });
-        this.props.onQRStatusUpdate();
+        this.props.onQRStatusUpdate(null);
       },
       onFailure: (errorStatus, errorText) => {
         this.props.onQRStatusUpdate({ errorStatus, errorText });

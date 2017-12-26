@@ -53,7 +53,7 @@ class TryItForm extends Component {
 
   handleReset() {
     this.setState({ input: "", url: "", errorMessage: "" });
-    this.urlInput.focus();
+    this.urlInputEl.focus();
   }
 
   handleSubmit(event) {
@@ -63,11 +63,13 @@ class TryItForm extends Component {
 
   getQR() {
     if (!this.state.input) {
-      this.showErrorMessage("Please, provide a link");
+      this.setState({ errorMessage: "Please, provide a link" });
       return;
     }
     if (!isUrlValid(this.state.input)) {
-      this.showErrorMessage("Unable to qrize this link. It is not a valid url");
+      this.setState({
+        errorMessage: "Unable to qrize this link. It is not a valid url"
+      });
       return;
     }
     this.setState({ url: this.state.input }); // pass url to TryitResult
@@ -78,10 +80,11 @@ class TryItForm extends Component {
   }
 
   handleQRStatusUpdate(error) {
+    console.log("handleQRStatusUpdate", error);
     const errorMessage = error
       ? `API error ${error.errorStatus}: ${error.errorText}`
       : "";
-    this.showErrorMessage(errorMessage);
+    this.setState({ errorMessage, hasQR: !error && this.state.url });
   }
 
   render() {
@@ -99,7 +102,7 @@ class TryItForm extends Component {
             className="url-input"
             placeholder="Paste a link"
             ref={input => {
-              this.urlInput = input;
+              this.urlInputEl = input;
             }}
             value={this.state.input}
             onInput={this.handleInput}

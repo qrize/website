@@ -1816,7 +1816,7 @@ var TryItForm = function (_Component) {
     key: "handleReset",
     value: function handleReset() {
       this.setState({ input: "", url: "", errorMessage: "" });
-      this.urlInput.focus();
+      this.urlInputEl.focus();
     }
   }, {
     key: "handleSubmit",
@@ -1828,11 +1828,13 @@ var TryItForm = function (_Component) {
     key: "getQR",
     value: function getQR() {
       if (!this.state.input) {
-        this.showErrorMessage("Please, provide a link");
+        this.setState({ errorMessage: "Please, provide a link" });
         return;
       }
       if (!isUrlValid(this.state.input)) {
-        this.showErrorMessage("Unable to qrize this link. It is not a valid url");
+        this.setState({
+          errorMessage: "Unable to qrize this link. It is not a valid url"
+        });
         return;
       }
       this.setState({ url: this.state.input }); // pass url to TryitResult
@@ -1845,8 +1847,9 @@ var TryItForm = function (_Component) {
   }, {
     key: "handleQRStatusUpdate",
     value: function handleQRStatusUpdate(error) {
+      console.log("handleQRStatusUpdate", error);
       var errorMessage = error ? "API error " + error.errorStatus + ": " + error.errorText : "";
-      this.showErrorMessage(errorMessage);
+      this.setState({ errorMessage: errorMessage, hasQR: !error && this.state.url });
     }
   }, {
     key: "render",
@@ -1869,7 +1872,7 @@ var TryItForm = function (_Component) {
             className: "url-input",
             placeholder: "Paste a link",
             ref: function ref(input) {
-              _this3.urlInput = input;
+              _this3.urlInputEl = input;
             },
             value: this.state.input,
             onInput: this.handleInput,
@@ -4251,6 +4254,7 @@ var TryItResult = function (_Component) {
       }
       if (!nextProps.url) {
         this.setState({ visible: false });
+        this.props.onQRStatusUpdate(null);
       } else {
         this.getQR(nextProps.url);
       }
@@ -4269,7 +4273,7 @@ var TryItResult = function (_Component) {
             visible: true,
             time: performance.now() - startTime
           });
-          _this2.props.onQRStatusUpdate();
+          _this2.props.onQRStatusUpdate(null);
         },
         onFailure: function onFailure(errorStatus, errorText) {
           _this2.props.onQRStatusUpdate({ errorStatus: errorStatus, errorText: errorText });
