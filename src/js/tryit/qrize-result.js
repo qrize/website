@@ -92,7 +92,10 @@ class QrizeResult extends Component {
 
   render() {
     return (
-      <div className={`qr-holder ${this.state.visible ? "" : "hide"}`}>
+      <div
+        className={`qr-holder ${this.state.visible ? "" : "hide"}`}
+        tabindex="0"
+      >
         <figure>
           <div id="qr-target" />
           <figcaption className="details">
