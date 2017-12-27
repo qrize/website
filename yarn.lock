@@ -4866,9 +4866,9 @@ qrcode-generator@1.3.1:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/qrcode-generator/-/qrcode-generator-1.3.1.tgz#eedcbe967ceba5585f0f4b8d9d7916961a335369"
 
-qrize@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/qrize/-/qrize-0.2.1.tgz#f3a643c089e1449244a6245cf09cb296d7795ba6"
+qrize@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/qrize/-/qrize-0.3.0.tgz#2383237230afff417eddbf25bd8a3d86ce4ca387"
   dependencies:
     qrcode-generator "1.3.1"
 

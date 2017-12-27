@@ -1,6 +1,6 @@
 import { h, Component } from "preact";
 import iconHtml from "../icon";
-import TryItResult from "./tryit-result";
+import QrizeResult from "./qrize-result";
 
 // See: https://github.com/qrize/qrize/blob/master/src/validators.js
 const urlRegExp = {
@@ -145,7 +145,7 @@ class TryItForm extends Component {
           </div>
         </div>
         {/* QR code */}
-        <TryItResult
+        <QrizeResult
           url={this.state.url}
           onQRStatusUpdate={this.handleQRStatusUpdate.bind(this)}
         />

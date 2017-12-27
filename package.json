@@ -18,7 +18,7 @@
   "dependencies": {
     "feather-icons": "4.4.0",
     "preact": "8.2.6",
-    "qrize": "^0.2.1"
+    "qrize": "^0.3.0"
   },
   "devDependencies": {
     "babel-core": "6.26.0",
