@@ -8,6 +8,7 @@
   flex-direction: column;
   align-items: center;
   outline: none;
+  margin-bottom: 2rem;
 
   figure {
     display: flex;
@@ -71,6 +72,7 @@
   &.hide {
     height: 0;
     visibility: hidden;
+    margin-bottom: 0;
 
     figure {
       display: none;
@@ -100,7 +102,6 @@
 
   .hint {
     margin-top: 0.5rem;
-    margin-bottom: 2rem;
     white-space: nowrap;
     font-size: 0.9rem;
     color: fade-out($base, 0.6);
