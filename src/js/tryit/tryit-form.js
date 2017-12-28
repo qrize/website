@@ -80,7 +80,6 @@ class TryItForm extends Component {
   }
 
   handleQRStatusUpdate(error) {
-    console.log("handleQRStatusUpdate", error);
     const errorMessage = error
       ? `API error ${error.errorStatus}: ${error.errorText}`
       : "";

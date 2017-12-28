@@ -133,7 +133,10 @@ class QrizeResult extends Component {
                   })}
                 />
               </dt>
-              <dd title={`It took ${this.state.time}ms to render a QR code`}>
+              <dd
+                title={`It took ${this.state
+                  .time}ms to shorten a link and render a QR code`}
+              >
                 Rendered in {this.state.time}ms
               </dd>
             </dl>

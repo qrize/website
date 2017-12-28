@@ -3,6 +3,8 @@
 $trans-duration: 100ms;
 $trans-func: ease-out;
 $trans: all $trans-duration $trans-func;
+$viewport_width: 80vw;
+$max_viewport_width: 800px;
 
 * {
   box-sizing: border-box;
@@ -26,9 +28,31 @@ body {
   color: $primary;
 }
 
-main {
+h1 {
+  font-size: 2.5rem;
+  font-weight: normal;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: normal;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.main {
   width: 100%;
   height: 100%;
+}
+
+.section {
+  margin: 0 auto;
+  padding: 2rem;
+  width: $viewport_width;
+  max-width: $max_viewport_width;
+  box-sizing: content-box;
 }
 
 strong {
