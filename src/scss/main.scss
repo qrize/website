@@ -4,7 +4,7 @@ $trans-duration: 100ms;
 $trans-func: ease-out;
 $trans: all $trans-duration $trans-func;
 $content_width: 80vw;
-$max_content_width: 800px;
+$max_content_width: 1000px;
 
 * {
   box-sizing: border-box;
@@ -33,14 +33,21 @@ h1 {
   font-size: 2.5rem;
   font-weight: normal;
   text-align: center;
-  margin: 2rem 0;
+  margin: 1em 0;
 }
 
 h2 {
   font-size: 2rem;
   font-weight: normal;
   text-align: center;
-  margin: 2rem 0;
+  margin: 1em 0;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: normal;
+  text-align: center;
+  margin: 1em 0;
 }
 
 .main {

@@ -10,8 +10,9 @@ form.tryit-form {
     position: relative;
     border: 0;
     padding: 0;
-    margin-bottom: 4rem;
+    margin: 0 auto 4rem;
     width: 100%;
+    max-width: 800px;
     font-size: 0.8rem;
     box-shadow: 0 10px 20px -10px fade-out($primary, 0.7);
 
@@ -19,6 +20,7 @@ form.tryit-form {
       flex: 1;
       margin: 0;
       padding: 1rem 2.5rem 1rem 1rem;
+      min-width: 0px;
       outline: none;
       border: 1px solid transparent;
       color: $base;
