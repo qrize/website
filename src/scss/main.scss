@@ -3,7 +3,6 @@
 $trans-duration: 100ms;
 $trans-func: ease-out;
 $trans: all $trans-duration $trans-func;
-$content_width: 80vw;
 $max_content_width: 800px;
 
 * {
@@ -37,7 +36,6 @@ body {
 .section {
   margin: 0 auto;
   padding: 2rem;
-  width: $content_width;
   max-width: $max_content_width;
   box-sizing: content-box;
 }
