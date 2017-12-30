@@ -15,7 +15,7 @@ const GitHubContainer = () => (
     </header>
 
     <p>
-      See{" "}
+      Go to{" "}
       <a
         href="https://github.com/qrize/qrize"
         target="_blank"
@@ -23,7 +23,7 @@ const GitHubContainer = () => (
       >
         https://github.com/qrize/qrize
       </a>{" "}
-      for more details.
+      if you need more details or have a question.
     </p>
   </section>
 );

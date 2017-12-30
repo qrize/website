@@ -10,15 +10,15 @@ const FooterContainer = () => (
           Sergey Goliney
         </a>
       </p>
-      <p>QR Code is a registered trademark of DENSO WAVE INCORPORATED.</p>
       <p>
+        QR Code is a registered trademark of{" "}
         <a
           href="http://www.qrcode.com/en/faq.html#patentH2Title"
           target="_blank"
           rel="noopener noreferrer"
         >
-          http://www.qrcode.com/en/faq.html#patentH2Title
-        </a>
+          DENSO WAVE INCORPORATED
+        </a>.
       </p>
     </section>
   </footer>

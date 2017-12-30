@@ -5894,7 +5894,7 @@ var GitHubContainer = function GitHubContainer() {
     (0, _preact.h)(
       "p",
       null,
-      "See",
+      "Go to",
       " ",
       (0, _preact.h)(
         "a",
@@ -5906,7 +5906,7 @@ var GitHubContainer = function GitHubContainer() {
         "https://github.com/qrize/qrize"
       ),
       " ",
-      "for more details."
+      "if you need more details or have a question."
     )
   );
 };
@@ -5954,11 +5954,8 @@ var FooterContainer = function FooterContainer() {
       (0, _preact.h)(
         "p",
         null,
-        "QR Code is a registered trademark of DENSO WAVE INCORPORATED."
-      ),
-      (0, _preact.h)(
-        "p",
-        null,
+        "QR Code is a registered trademark of",
+        " ",
         (0, _preact.h)(
           "a",
           {
@@ -5966,8 +5963,9 @@ var FooterContainer = function FooterContainer() {
             target: "_blank",
             rel: "noopener noreferrer"
           },
-          "http://www.qrcode.com/en/faq.html#patentH2Title"
-        )
+          "DENSO WAVE INCORPORATED"
+        ),
+        "."
       )
     )
   );
