@@ -35,7 +35,7 @@ const WhyQrizeContainer = () => (
           <h3>Readers friendly</h3>
         </header>
         <p>
-          Qrize produces QR codes with constanly low dencity of dots (modules)
+          Qrize produces QR codes with constanly low density of dots (modules)
           making them more readable by mobile devices
         </p>
       </li>

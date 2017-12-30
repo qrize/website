@@ -4549,7 +4549,7 @@ var WhyQrizeContainer = function WhyQrizeContainer() {
         (0, _preact.h)(
           "p",
           null,
-          "Qrize produces QR codes with constanly low dencity of dots (modules) making them more readable by mobile devices"
+          "Qrize produces QR codes with constanly low density of dots (modules) making them more readable by mobile devices"
         )
       ),
       (0, _preact.h)(
