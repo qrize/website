@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -1068,62 +1068,6 @@ function IconHtml(glyph) {
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-__webpack_require__(3);
-
-__webpack_require__(8);
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(4);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {"hmr":true}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(6)(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/lib/index.js!../../node_modules/sass-loader/lib/loader.js!./imports.scss", function() {
-			var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/lib/index.js!../../node_modules/sass-loader/lib/loader.js!./imports.scss");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(5)(undefined);
-// imports
-exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Rubik:300,400);", ""]);
-
-// module
-exports.push([module.i, "/* Coolors Exported Palette - coolors.co/ffffff-231f20-bb4430-7ebdc2-f3dfa2 */\n/* RGB */\n* {\n  box-sizing: border-box;\n  font-family: inherit;\n  font-size: inherit;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale; }\n\nhtml, body {\n  margin: 0;\n  padding: 0;\n  height: 100%;\n  min-width: 460px;\n  font-size: 16px;\n  background-color: white; }\n\nbody {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  font-family: 'Rubik', Arial, sans-serif;\n  color: #231f20; }\n\nh1 {\n  font-size: 2.5rem;\n  font-weight: normal;\n  text-align: center;\n  margin: 1em 0; }\n\nh2 {\n  font-size: 2rem;\n  font-weight: normal;\n  text-align: center;\n  margin: 1em 0; }\n\nh3 {\n  font-size: 1.5rem;\n  font-weight: normal;\n  text-align: center;\n  margin: 1em 0; }\n\n.main {\n  width: 100%;\n  height: 100%; }\n\n.section {\n  margin: 0 auto;\n  padding: 2rem;\n  width: 80vw;\n  max-width: 1000px;\n  box-sizing: content-box; }\n\nstrong {\n  color: #fcd45f;\n  text-shadow: 1px 1px #231f20; }\n\nbutton,\ninput[type=button],\ninput[type=submit] {\n  margin: 0;\n  border: 0;\n  padding: 0;\n  display: inline-block;\n  vertical-align: middle;\n  white-space: normal;\n  line-height: 1;\n  outline: none;\n  border-radius: 0;\n  background: transparent;\n  -webkit-appearance: none; }\n  button:not(:disabled),\n  input[type=button]:not(:disabled),\n  input[type=submit]:not(:disabled) {\n    cursor: pointer; }\n\n.glyph {\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center; }\n\na {\n  color: #bb4430; }\n\n.try-it {\n  width: 100%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  color: white;\n  background: #2c6e82;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #28638a, #2e7779);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }\n  .try-it .title {\n    margin-bottom: 0; }\n  .try-it .try-qrize {\n    text-align: center; }\n\nform.tryit-form {\n  text-align: center;\n  margin-top: 4rem; }\n  form.tryit-form .input-group {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    position: relative;\n    border: 0;\n    padding: 0;\n    margin: 0 auto 4rem;\n    width: 100%;\n    max-width: 800px;\n    font-size: 0.8rem;\n    box-shadow: 0 10px 20px -10px rgba(35, 31, 32, 0.3); }\n    form.tryit-form .input-group .url-input {\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n      margin: 0;\n      padding: 1rem 2.5rem 1rem 1rem;\n      min-width: 0px;\n      outline: none;\n      border: 1px solid transparent;\n      color: white;\n      border-radius: 0.15rem 0 0 0.15rem;\n      background-color: rgba(255, 255, 255, 0.2);\n      transition: all 100ms ease-out; }\n      form.tryit-form .input-group .url-input::-webkit-input-placeholder {\n        /* Chrome/Opera/Safari */\n        color: rgba(255, 255, 255, 0.65); }\n      form.tryit-form .input-group .url-input::-moz-placeholder {\n        /* Firefox 19+ */\n        color: rgba(255, 255, 255, 0.65); }\n      form.tryit-form .input-group .url-input:-ms-input-placeholder {\n        /* IE 10+ */\n        color: rgba(255, 255, 255, 0.65); }\n      form.tryit-form .input-group .url-input:-moz-placeholder {\n        /* Firefox 18- */\n        color: rgba(255, 255, 255, 0.5); }\n      form.tryit-form .input-group .url-input:focus {\n        background-color: rgba(255, 255, 255, 0.25); }\n    form.tryit-form .input-group .reset-btn {\n      display: none;\n      position: absolute;\n      right: 8rem;\n      top: 50%;\n      width: 1.5rem;\n      height: 1.5rem;\n      margin-right: 0.5rem;\n      opacity: 0.9;\n      -webkit-transform: translateY(-50%);\n              transform: translateY(-50%);\n      transition: all 100ms ease-out; }\n      form.tryit-form .input-group .reset-btn.show {\n        display: block; }\n        form.tryit-form .input-group .reset-btn.show:focus {\n          box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5); }\n        form.tryit-form .input-group .reset-btn.show:focus:hover:not(:active) {\n          box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.65); }\n        form.tryit-form .input-group .reset-btn.show:active {\n          box-shadow: unset; }\n    form.tryit-form .input-group .submit-btn {\n      border: 1px solid transparent;\n      color: white;\n      text-transform: uppercase;\n      background-color: #231f20;\n      border-radius: 0 0.15rem 0.15rem 0;\n      transition: all 100ms ease-out; }\n      form.tryit-form .input-group .submit-btn:hover:not(:disabled), form.tryit-form .input-group .submit-btn:focus {\n        background-color: rgba(35, 31, 32, 0.85); }\n      form.tryit-form .input-group .submit-btn:focus {\n        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5); }\n      form.tryit-form .input-group .submit-btn:focus:hover:not(:active) {\n        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.65); }\n      form.tryit-form .input-group .submit-btn:active {\n        box-shadow: unset;\n        background-color: #231f20; }\n    form.tryit-form .input-group .submit-btn .button-content {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      width: 8rem; }\n      form.tryit-form .input-group .submit-btn .button-content > *:not(:first-child) {\n        margin-left: 0.3em; }\n    form.tryit-form .input-group .error {\n      position: absolute;\n      top: 100%;\n      left: 50%;\n      -webkit-transform: translateX(-50%);\n              transform: translateX(-50%);\n      padding: 0.4em 0.8em;\n      font-size: 1rem;\n      border-radius: 0.15rem;\n      background: #bb4430;\n      margin-top: 20px;\n      opacity: 0; }\n      form.tryit-form .input-group .error.show {\n        transition: all 100ms ease-out;\n        margin-top: 6px;\n        opacity: 1; }\n      form.tryit-form .input-group .error::after {\n        content: \"\";\n        position: absolute;\n        bottom: 100%;\n        left: 50%;\n        margin-left: -3px;\n        width: 0;\n        height: 0;\n        border-left: 6px solid transparent;\n        border-right: 6px solid transparent;\n        border-bottom: 6px solid #bb4430; }\n\n.qr-holder {\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  outline: none;\n  margin-bottom: 2rem; }\n  .qr-holder figure {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    margin: 0;\n    padding: 25px;\n    width: 175px;\n    height: 175px;\n    max-width: 80vw;\n    color: #231f20;\n    background: white;\n    overflow: hidden;\n    transition: all 100ms ease-out; }\n    .qr-holder figure dl, .qr-holder figure dt, .qr-holder figure dd {\n      margin: 0; }\n    .qr-holder figure dt {\n      display: -webkit-inline-box;\n      display: -ms-inline-flexbox;\n      display: inline-flex;\n      margin-right: 1rem; }\n    .qr-holder figure dd {\n      white-space: nowrap; }\n    .qr-holder figure .details {\n      padding-left: 25px;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column;\n      -ms-flex-pack: distribute;\n          justify-content: space-around; }\n    .qr-holder figure .details-group {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      opacity: 0;\n      -webkit-transform: translateX(1rem);\n              transform: translateX(1rem);\n      transition: all 100ms ease-out; }\n      .qr-holder figure .details-group:nth-child(1) {\n        transition-delay: 100ms; }\n      .qr-holder figure .details-group:nth-child(2) {\n        transition-delay: 150ms; }\n      .qr-holder figure .details-group:nth-child(3) {\n        transition-delay: 200ms; }\n  .qr-holder .animate-out-hint, .qr-holder.hide .hint, .qr-holder:hover .hint, .qr-holder:focus .hint, .qr-holder:focus-within .hint {\n    opacity: 0;\n    -webkit-transform: translateY(-0.5rem);\n            transform: translateY(-0.5rem);\n    transition-delay: 0ms;\n    transition-duration: 0ms; }\n  .qr-holder.hide {\n    height: 0;\n    visibility: hidden;\n    margin-bottom: 0; }\n    .qr-holder.hide figure {\n      display: none; }\n  .qr-holder:hover figure, .qr-holder:focus figure, .qr-holder:focus-within figure {\n    width: 475px; }\n    .qr-holder:hover figure .details-group, .qr-holder:focus figure .details-group, .qr-holder:focus-within figure .details-group {\n      opacity: 1;\n      -webkit-transform: translateX(0);\n              transform: translateX(0); }\n  .qr-holder .hint {\n    margin-top: 0.5rem;\n    white-space: nowrap;\n    font-size: 0.9rem;\n    color: rgba(255, 255, 255, 0.4);\n    pointer-events: none;\n    opacity: 1;\n    -webkit-transform: translateY(0);\n            transform: translateY(0);\n    transition: all 100ms ease-out;\n    transition-delay: 400ms; }\n    .qr-holder .hint > *:not(:last-child) {\n      margin-right: 0.3rem; }\n\n.why-qrize ul {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  -ms-flex-pack: distribute;\n      justify-content: space-around;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  margin: 4rem 0 0;\n  padding: 0;\n  list-style: none; }\n\n.why-qrize ul li {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  width: 30%;\n  min-width: 250px;\n  margin-bottom: 2.5rem; }\n  .why-qrize ul li header {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center; }\n  .why-qrize ul li h3 {\n    text-align: center;\n    color: #bb4430; }\n  .why-qrize ul li p {\n    text-align: center;\n    font-size: 0.9rem;\n    margin: 0;\n    line-height: 1.5em; }\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 5 */
 /***/ (function(module, exports) {
 
 /*
@@ -1205,7 +1149,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 6 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -1577,6 +1521,62 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(5);
+
+__webpack_require__(8);
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(6);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {"hmr":true}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(3)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/lib/index.js!../../node_modules/sass-loader/lib/loader.js!./imports.scss", function() {
+			var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/lib/index.js!../../node_modules/sass-loader/lib/loader.js!./imports.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(undefined);
+// imports
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Rubik:300,400);", ""]);
+
+// module
+exports.push([module.i, "/* Coolors Exported Palette - coolors.co/ffffff-231f20-bb4430-7ebdc2-f3dfa2 */\n/* RGB */\n* {\n  box-sizing: border-box;\n  font-family: inherit;\n  font-size: inherit;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale; }\n\nhtml, body {\n  margin: 0;\n  padding: 0;\n  height: 100%;\n  min-width: 460px;\n  font-size: 16px;\n  background-color: white; }\n\nbody {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  font-family: 'Rubik', Arial, sans-serif;\n  color: #231f20; }\n\n.main {\n  width: 100%;\n  height: 100%; }\n\n.section {\n  margin: 0 auto;\n  padding: 2rem;\n  width: 80vw;\n  max-width: 800px;\n  box-sizing: content-box; }\n\nh1 {\n  font-size: 2.5rem;\n  font-weight: normal;\n  text-align: center;\n  margin: 1em 0; }\n\nh2 {\n  font-size: 2rem;\n  font-weight: normal;\n  text-align: center;\n  margin: 1em 0; }\n\nh3 {\n  font-size: 1.5rem;\n  font-weight: normal;\n  text-align: center;\n  margin: 1em 0; }\n\np {\n  line-height: 1.5em; }\n\nstrong {\n  color: #fcd45f;\n  text-shadow: 1px 1px #231f20; }\n\nbutton,\ninput[type=button],\ninput[type=submit] {\n  margin: 0;\n  border: 0;\n  padding: 0;\n  display: inline-block;\n  vertical-align: middle;\n  white-space: normal;\n  line-height: 1;\n  outline: none;\n  border-radius: 0;\n  background: transparent;\n  -webkit-appearance: none; }\n  button:not(:disabled),\n  input[type=button]:not(:disabled),\n  input[type=submit]:not(:disabled) {\n    cursor: pointer; }\n\n.glyph {\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center; }\n\na {\n  color: #bb4430; }\n\n.try-it {\n  width: 100%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  color: white;\n  background: #2c6e82;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #28638a, #2e7779);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }\n  .try-it .title {\n    margin-bottom: 0; }\n  .try-it .try-qrize {\n    text-align: center; }\n\nform.tryit-form {\n  text-align: center;\n  margin-top: 4rem; }\n  form.tryit-form .input-group {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    position: relative;\n    border: 0;\n    padding: 0;\n    margin: 0 auto 4rem;\n    width: 100%;\n    font-size: 0.8rem;\n    box-shadow: 0 10px 20px -10px rgba(35, 31, 32, 0.3); }\n    form.tryit-form .input-group .url-input {\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n      margin: 0;\n      padding: 1rem 2.5rem 1rem 1rem;\n      min-width: 0px;\n      outline: none;\n      border: 1px solid transparent;\n      color: white;\n      border-radius: 0.15rem 0 0 0.15rem;\n      background-color: rgba(255, 255, 255, 0.2);\n      transition: all 100ms ease-out; }\n      form.tryit-form .input-group .url-input::-webkit-input-placeholder {\n        /* Chrome/Opera/Safari */\n        color: rgba(255, 255, 255, 0.65); }\n      form.tryit-form .input-group .url-input::-moz-placeholder {\n        /* Firefox 19+ */\n        color: rgba(255, 255, 255, 0.65); }\n      form.tryit-form .input-group .url-input:-ms-input-placeholder {\n        /* IE 10+ */\n        color: rgba(255, 255, 255, 0.65); }\n      form.tryit-form .input-group .url-input:-moz-placeholder {\n        /* Firefox 18- */\n        color: rgba(255, 255, 255, 0.5); }\n      form.tryit-form .input-group .url-input:focus {\n        background-color: rgba(255, 255, 255, 0.25); }\n    form.tryit-form .input-group .reset-btn {\n      display: none;\n      position: absolute;\n      right: 8rem;\n      top: 50%;\n      width: 1.5rem;\n      height: 1.5rem;\n      margin-right: 0.5rem;\n      opacity: 0.9;\n      -webkit-transform: translateY(-50%);\n              transform: translateY(-50%);\n      transition: all 100ms ease-out; }\n      form.tryit-form .input-group .reset-btn.show {\n        display: block; }\n        form.tryit-form .input-group .reset-btn.show:focus {\n          box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5); }\n        form.tryit-form .input-group .reset-btn.show:focus:hover:not(:active) {\n          box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.65); }\n        form.tryit-form .input-group .reset-btn.show:active {\n          box-shadow: unset; }\n    form.tryit-form .input-group .submit-btn {\n      border: 1px solid transparent;\n      color: white;\n      text-transform: uppercase;\n      background-color: #231f20;\n      border-radius: 0 0.15rem 0.15rem 0;\n      transition: all 100ms ease-out; }\n      form.tryit-form .input-group .submit-btn:hover:not(:disabled), form.tryit-form .input-group .submit-btn:focus {\n        background-color: rgba(35, 31, 32, 0.85); }\n      form.tryit-form .input-group .submit-btn:focus {\n        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5); }\n      form.tryit-form .input-group .submit-btn:focus:hover:not(:active) {\n        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.65); }\n      form.tryit-form .input-group .submit-btn:active {\n        box-shadow: unset;\n        background-color: #231f20; }\n    form.tryit-form .input-group .submit-btn .button-content {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      width: 8rem; }\n      form.tryit-form .input-group .submit-btn .button-content > *:not(:first-child) {\n        margin-left: 0.3em; }\n    form.tryit-form .input-group .error {\n      position: absolute;\n      top: 100%;\n      left: 50%;\n      -webkit-transform: translateX(-50%);\n              transform: translateX(-50%);\n      padding: 0.4em 0.8em;\n      font-size: 1rem;\n      border-radius: 0.15rem;\n      background: #bb4430;\n      margin-top: 20px;\n      opacity: 0; }\n      form.tryit-form .input-group .error.show {\n        transition: all 100ms ease-out;\n        margin-top: 6px;\n        opacity: 1; }\n      form.tryit-form .input-group .error::after {\n        content: \"\";\n        position: absolute;\n        bottom: 100%;\n        left: 50%;\n        margin-left: -3px;\n        width: 0;\n        height: 0;\n        border-left: 6px solid transparent;\n        border-right: 6px solid transparent;\n        border-bottom: 6px solid #bb4430; }\n\n.qr-holder {\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  outline: none;\n  margin-bottom: 2rem; }\n  .qr-holder figure {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    margin: 0;\n    padding: 25px;\n    width: 175px;\n    height: 175px;\n    max-width: 80vw;\n    color: #231f20;\n    background: white;\n    overflow: hidden;\n    transition: all 100ms ease-out; }\n    .qr-holder figure dl, .qr-holder figure dt, .qr-holder figure dd {\n      margin: 0; }\n    .qr-holder figure dt {\n      display: -webkit-inline-box;\n      display: -ms-inline-flexbox;\n      display: inline-flex;\n      margin-right: 1rem; }\n    .qr-holder figure dd {\n      white-space: nowrap; }\n    .qr-holder figure .details {\n      padding-left: 25px;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column;\n      -ms-flex-pack: distribute;\n          justify-content: space-around; }\n    .qr-holder figure .details-group {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      opacity: 0;\n      -webkit-transform: translateX(1rem);\n              transform: translateX(1rem);\n      transition: all 100ms ease-out; }\n      .qr-holder figure .details-group:nth-child(1) {\n        transition-delay: 100ms; }\n      .qr-holder figure .details-group:nth-child(2) {\n        transition-delay: 150ms; }\n      .qr-holder figure .details-group:nth-child(3) {\n        transition-delay: 200ms; }\n  .qr-holder .animate-out-hint, .qr-holder.hide .hint, .qr-holder:hover .hint, .qr-holder:focus .hint, .qr-holder:focus-within .hint {\n    opacity: 0;\n    -webkit-transform: translateY(-0.5rem);\n            transform: translateY(-0.5rem);\n    transition-delay: 0ms;\n    transition-duration: 0ms; }\n  .qr-holder.hide {\n    height: 0;\n    visibility: hidden;\n    margin-bottom: 0; }\n    .qr-holder.hide figure {\n      display: none; }\n  .qr-holder:hover figure, .qr-holder:focus figure, .qr-holder:focus-within figure {\n    width: 475px; }\n    .qr-holder:hover figure .details-group, .qr-holder:focus figure .details-group, .qr-holder:focus-within figure .details-group {\n      opacity: 1;\n      -webkit-transform: translateX(0);\n              transform: translateX(0); }\n  .qr-holder .hint {\n    margin-top: 0.5rem;\n    white-space: nowrap;\n    font-size: 0.9rem;\n    color: rgba(255, 255, 255, 0.4);\n    pointer-events: none;\n    opacity: 1;\n    -webkit-transform: translateY(0);\n            transform: translateY(0);\n    transition: all 100ms ease-out;\n    transition-delay: 400ms; }\n    .qr-holder .hint > *:not(:last-child) {\n      margin-right: 0.3rem; }\n\n.why-qrize {\n  max-width: 1000px; }\n  .why-qrize ul {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n    margin: 1.5rem 0 0;\n    padding: 0;\n    list-style: none; }\n  .why-qrize ul li {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    width: 30%;\n    min-width: 250px;\n    margin-top: 2.5rem; }\n    .why-qrize ul li header {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center; }\n    .why-qrize ul li h3 {\n      text-align: center;\n      color: #bb4430; }\n    .why-qrize ul li p {\n      text-align: center;\n      font-size: 0.9rem;\n      margin: 0; }\n\n.how-to ol li {\n  margin: 1rem 0; }\n\n.github header {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center; }\n  .github header > *:not(:last-child) {\n    margin-right: 0.5em; }\n\n.footer {\n  margin-top: 4rem;\n  background-color: #231f20;\n  color: white; }\n  .footer a {\n    color: white; }\n", ""]);
+
+// exports
+
+
+/***/ }),
 /* 7 */
 /***/ (function(module, exports) {
 
@@ -1688,6 +1688,18 @@ var _whyContainer = __webpack_require__(14);
 
 var _whyContainer2 = _interopRequireDefault(_whyContainer);
 
+var _howtoContainer = __webpack_require__(15);
+
+var _howtoContainer2 = _interopRequireDefault(_howtoContainer);
+
+var _githubContainer = __webpack_require__(22);
+
+var _githubContainer2 = _interopRequireDefault(_githubContainer);
+
+var _footerContainer = __webpack_require__(23);
+
+var _footerContainer2 = _interopRequireDefault(_footerContainer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App() {
@@ -1695,7 +1707,10 @@ var App = function App() {
     "main",
     { className: "main" },
     (0, _preact.h)(_tryitContainer2.default, null),
-    (0, _preact.h)(_whyContainer2.default, null)
+    (0, _preact.h)(_whyContainer2.default, null),
+    (0, _preact.h)(_howtoContainer2.default, null),
+    (0, _preact.h)(_githubContainer2.default, null),
+    (0, _preact.h)(_footerContainer2.default, null)
   );
 };
 
@@ -4511,7 +4526,7 @@ var WhyQrizeContainer = function WhyQrizeContainer() {
         (0, _preact.h)(
           "p",
           null,
-          "With QR codes taking less space on the web-page you are able to accomodate more useful information"
+          "With QR codes taking less space on a page you are able to accomodate more useful information"
         )
       ),
       (0, _preact.h)(
@@ -4557,7 +4572,7 @@ var WhyQrizeContainer = function WhyQrizeContainer() {
         (0, _preact.h)(
           "p",
           null,
-          "Given the possibility to make smaller QR codes why would you keap them originaly sized?"
+          "Given the possibility to make QR codes smaller, why would you keap them originaly sized?"
         )
       )
     )
@@ -4565,6 +4580,1400 @@ var WhyQrizeContainer = function WhyQrizeContainer() {
 };
 
 exports.default = WhyQrizeContainer;
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _preact = __webpack_require__(0);
+
+var _prismCode = __webpack_require__(16);
+
+var _prismCode2 = _interopRequireDefault(_prismCode);
+
+var _icon = __webpack_require__(1);
+
+var _icon2 = _interopRequireDefault(_icon);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var HowToUseContainer = function HowToUseContainer() {
+  return (0, _preact.h)(
+    "section",
+    { className: "section how-to" },
+    (0, _preact.h)(
+      "h2",
+      null,
+      "How to use?"
+    ),
+    (0, _preact.h)(
+      "p",
+      null,
+      "First, include qrize in your application. Qrize is available on npm:"
+    ),
+    (0, _preact.h)(
+      _prismCode2.default,
+      { className: "language-sh" },
+      "\n        npm install --save qrize\n      "
+    ),
+    (0, _preact.h)(
+      "p",
+      null,
+      "and CDN:"
+    ),
+    (0, _preact.h)(
+      _prismCode2.default,
+      { className: "language-markup" },
+      "\n        <script src=\"https://unpkg.com/qrize/dist/qrize.umd.js\"></script>\n      "
+    ),
+    (0, _preact.h)(
+      "p",
+      null,
+      "Then include following script somewhere:"
+    ),
+    (0, _preact.h)(
+      _prismCode2.default,
+      { className: "language-javascript" },
+      "\n        import Qrize from \"qrize\";\n\n        const qrize = new Qrize({\n          element: document.getElementById(\"qr-target\")\n        });\n        qrize.createImg({ url: \"http://example.com\" });\n      "
+    ),
+    (0, _preact.h)(
+      "p",
+      null,
+      "That's it. Now an element wih \"qr-target\" id contains tiny QR code that leads to the url you specified."
+    )
+  );
+};
+
+exports.default = HowToUseContainer;
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _preact = __webpack_require__(0);
+
+var _prismjs = __webpack_require__(17);
+
+var _prismjs2 = _interopRequireDefault(_prismjs);
+
+__webpack_require__(19);
+
+__webpack_require__(21);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var PrismCode = function (_Component) {
+  _inherits(PrismCode, _Component);
+
+  function PrismCode() {
+    _classCallCheck(this, PrismCode);
+
+    return _possibleConstructorReturn(this, (PrismCode.__proto__ || Object.getPrototypeOf(PrismCode)).apply(this, arguments));
+  }
+
+  _createClass(PrismCode, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.hightlight();
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      this.hightlight();
+    }
+  }, {
+    key: "hightlight",
+    value: function hightlight() {
+      _prismjs2.default.highlightElement(this.domNode);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var _props = this.props,
+          className = _props.className,
+          children = _props.children;
+
+
+      return (0, _preact.h)(
+        "pre",
+        { "class": "normalize-whitespace" },
+        (0, _preact.h)(
+          "code",
+          {
+            ref: function ref(domNode) {
+              _this2.domNode = domNode;
+            },
+            className: className
+          },
+          children
+        )
+      );
+    }
+  }]);
+
+  return PrismCode;
+}(_preact.Component);
+
+exports.default = PrismCode;
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global) {
+/* **********************************************
+     Begin prism-core.js
+********************************************** */
+
+var _self = (typeof window !== 'undefined')
+	? window   // if in browser
+	: (
+		(typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope)
+		? self // if in worker
+		: {}   // if in node js
+	);
+
+/**
+ * Prism: Lightweight, robust, elegant syntax highlighting
+ * MIT license http://www.opensource.org/licenses/mit-license.php/
+ * @author Lea Verou http://lea.verou.me
+ */
+
+var Prism = (function(){
+
+// Private helper vars
+var lang = /\blang(?:uage)?-(\w+)\b/i;
+var uniqueId = 0;
+
+var _ = _self.Prism = {
+	manual: _self.Prism && _self.Prism.manual,
+	disableWorkerMessageHandler: _self.Prism && _self.Prism.disableWorkerMessageHandler,
+	util: {
+		encode: function (tokens) {
+			if (tokens instanceof Token) {
+				return new Token(tokens.type, _.util.encode(tokens.content), tokens.alias);
+			} else if (_.util.type(tokens) === 'Array') {
+				return tokens.map(_.util.encode);
+			} else {
+				return tokens.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/\u00a0/g, ' ');
+			}
+		},
+
+		type: function (o) {
+			return Object.prototype.toString.call(o).match(/\[object (\w+)\]/)[1];
+		},
+
+		objId: function (obj) {
+			if (!obj['__id']) {
+				Object.defineProperty(obj, '__id', { value: ++uniqueId });
+			}
+			return obj['__id'];
+		},
+
+		// Deep clone a language definition (e.g. to extend it)
+		clone: function (o) {
+			var type = _.util.type(o);
+
+			switch (type) {
+				case 'Object':
+					var clone = {};
+
+					for (var key in o) {
+						if (o.hasOwnProperty(key)) {
+							clone[key] = _.util.clone(o[key]);
+						}
+					}
+
+					return clone;
+
+				case 'Array':
+					return o.map(function(v) { return _.util.clone(v); });
+			}
+
+			return o;
+		}
+	},
+
+	languages: {
+		extend: function (id, redef) {
+			var lang = _.util.clone(_.languages[id]);
+
+			for (var key in redef) {
+				lang[key] = redef[key];
+			}
+
+			return lang;
+		},
+
+		/**
+		 * Insert a token before another token in a language literal
+		 * As this needs to recreate the object (we cannot actually insert before keys in object literals),
+		 * we cannot just provide an object, we need anobject and a key.
+		 * @param inside The key (or language id) of the parent
+		 * @param before The key to insert before. If not provided, the function appends instead.
+		 * @param insert Object with the key/value pairs to insert
+		 * @param root The object that contains `inside`. If equal to Prism.languages, it can be omitted.
+		 */
+		insertBefore: function (inside, before, insert, root) {
+			root = root || _.languages;
+			var grammar = root[inside];
+
+			if (arguments.length == 2) {
+				insert = arguments[1];
+
+				for (var newToken in insert) {
+					if (insert.hasOwnProperty(newToken)) {
+						grammar[newToken] = insert[newToken];
+					}
+				}
+
+				return grammar;
+			}
+
+			var ret = {};
+
+			for (var token in grammar) {
+
+				if (grammar.hasOwnProperty(token)) {
+
+					if (token == before) {
+
+						for (var newToken in insert) {
+
+							if (insert.hasOwnProperty(newToken)) {
+								ret[newToken] = insert[newToken];
+							}
+						}
+					}
+
+					ret[token] = grammar[token];
+				}
+			}
+
+			// Update references in other language definitions
+			_.languages.DFS(_.languages, function(key, value) {
+				if (value === root[inside] && key != inside) {
+					this[key] = ret;
+				}
+			});
+
+			return root[inside] = ret;
+		},
+
+		// Traverse a language definition with Depth First Search
+		DFS: function(o, callback, type, visited) {
+			visited = visited || {};
+			for (var i in o) {
+				if (o.hasOwnProperty(i)) {
+					callback.call(o, i, o[i], type || i);
+
+					if (_.util.type(o[i]) === 'Object' && !visited[_.util.objId(o[i])]) {
+						visited[_.util.objId(o[i])] = true;
+						_.languages.DFS(o[i], callback, null, visited);
+					}
+					else if (_.util.type(o[i]) === 'Array' && !visited[_.util.objId(o[i])]) {
+						visited[_.util.objId(o[i])] = true;
+						_.languages.DFS(o[i], callback, i, visited);
+					}
+				}
+			}
+		}
+	},
+	plugins: {},
+
+	highlightAll: function(async, callback) {
+		_.highlightAllUnder(document, async, callback);
+	},
+
+	highlightAllUnder: function(container, async, callback) {
+		var env = {
+			callback: callback,
+			selector: 'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'
+		};
+
+		_.hooks.run("before-highlightall", env);
+
+		var elements = env.elements || container.querySelectorAll(env.selector);
+
+		for (var i=0, element; element = elements[i++];) {
+			_.highlightElement(element, async === true, env.callback);
+		}
+	},
+
+	highlightElement: function(element, async, callback) {
+		// Find language
+		var language, grammar, parent = element;
+
+		while (parent && !lang.test(parent.className)) {
+			parent = parent.parentNode;
+		}
+
+		if (parent) {
+			language = (parent.className.match(lang) || [,''])[1].toLowerCase();
+			grammar = _.languages[language];
+		}
+
+		// Set language on the element, if not present
+		element.className = element.className.replace(lang, '').replace(/\s+/g, ' ') + ' language-' + language;
+
+		if (element.parentNode) {
+			// Set language on the parent, for styling
+			parent = element.parentNode;
+
+			if (/pre/i.test(parent.nodeName)) {
+				parent.className = parent.className.replace(lang, '').replace(/\s+/g, ' ') + ' language-' + language;
+			}
+		}
+
+		var code = element.textContent;
+
+		var env = {
+			element: element,
+			language: language,
+			grammar: grammar,
+			code: code
+		};
+
+		_.hooks.run('before-sanity-check', env);
+
+		if (!env.code || !env.grammar) {
+			if (env.code) {
+				_.hooks.run('before-highlight', env);
+				env.element.textContent = env.code;
+				_.hooks.run('after-highlight', env);
+			}
+			_.hooks.run('complete', env);
+			return;
+		}
+
+		_.hooks.run('before-highlight', env);
+
+		if (async && _self.Worker) {
+			var worker = new Worker(_.filename);
+
+			worker.onmessage = function(evt) {
+				env.highlightedCode = evt.data;
+
+				_.hooks.run('before-insert', env);
+
+				env.element.innerHTML = env.highlightedCode;
+
+				callback && callback.call(env.element);
+				_.hooks.run('after-highlight', env);
+				_.hooks.run('complete', env);
+			};
+
+			worker.postMessage(JSON.stringify({
+				language: env.language,
+				code: env.code,
+				immediateClose: true
+			}));
+		}
+		else {
+			env.highlightedCode = _.highlight(env.code, env.grammar, env.language);
+
+			_.hooks.run('before-insert', env);
+
+			env.element.innerHTML = env.highlightedCode;
+
+			callback && callback.call(element);
+
+			_.hooks.run('after-highlight', env);
+			_.hooks.run('complete', env);
+		}
+	},
+
+	highlight: function (text, grammar, language) {
+		var tokens = _.tokenize(text, grammar);
+		return Token.stringify(_.util.encode(tokens), language);
+	},
+
+	matchGrammar: function (text, strarr, grammar, index, startPos, oneshot, target) {
+		var Token = _.Token;
+
+		for (var token in grammar) {
+			if(!grammar.hasOwnProperty(token) || !grammar[token]) {
+				continue;
+			}
+
+			if (token == target) {
+				return;
+			}
+
+			var patterns = grammar[token];
+			patterns = (_.util.type(patterns) === "Array") ? patterns : [patterns];
+
+			for (var j = 0; j < patterns.length; ++j) {
+				var pattern = patterns[j],
+					inside = pattern.inside,
+					lookbehind = !!pattern.lookbehind,
+					greedy = !!pattern.greedy,
+					lookbehindLength = 0,
+					alias = pattern.alias;
+
+				if (greedy && !pattern.pattern.global) {
+					// Without the global flag, lastIndex won't work
+					var flags = pattern.pattern.toString().match(/[imuy]*$/)[0];
+					pattern.pattern = RegExp(pattern.pattern.source, flags + "g");
+				}
+
+				pattern = pattern.pattern || pattern;
+
+				// Don’t cache length as it changes during the loop
+				for (var i = index, pos = startPos; i < strarr.length; pos += strarr[i].length, ++i) {
+
+					var str = strarr[i];
+
+					if (strarr.length > text.length) {
+						// Something went terribly wrong, ABORT, ABORT!
+						return;
+					}
+
+					if (str instanceof Token) {
+						continue;
+					}
+
+					pattern.lastIndex = 0;
+
+					var match = pattern.exec(str),
+					    delNum = 1;
+
+					// Greedy patterns can override/remove up to two previously matched tokens
+					if (!match && greedy && i != strarr.length - 1) {
+						pattern.lastIndex = pos;
+						match = pattern.exec(text);
+						if (!match) {
+							break;
+						}
+
+						var from = match.index + (lookbehind ? match[1].length : 0),
+						    to = match.index + match[0].length,
+						    k = i,
+						    p = pos;
+
+						for (var len = strarr.length; k < len && (p < to || (!strarr[k].type && !strarr[k - 1].greedy)); ++k) {
+							p += strarr[k].length;
+							// Move the index i to the element in strarr that is closest to from
+							if (from >= p) {
+								++i;
+								pos = p;
+							}
+						}
+
+						/*
+						 * If strarr[i] is a Token, then the match starts inside another Token, which is invalid
+						 * If strarr[k - 1] is greedy we are in conflict with another greedy pattern
+						 */
+						if (strarr[i] instanceof Token || strarr[k - 1].greedy) {
+							continue;
+						}
+
+						// Number of tokens to delete and replace with the new match
+						delNum = k - i;
+						str = text.slice(pos, p);
+						match.index -= pos;
+					}
+
+					if (!match) {
+						if (oneshot) {
+							break;
+						}
+
+						continue;
+					}
+
+					if(lookbehind) {
+						lookbehindLength = match[1].length;
+					}
+
+					var from = match.index + lookbehindLength,
+					    match = match[0].slice(lookbehindLength),
+					    to = from + match.length,
+					    before = str.slice(0, from),
+					    after = str.slice(to);
+
+					var args = [i, delNum];
+
+					if (before) {
+						++i;
+						pos += before.length;
+						args.push(before);
+					}
+
+					var wrapped = new Token(token, inside? _.tokenize(match, inside) : match, alias, match, greedy);
+
+					args.push(wrapped);
+
+					if (after) {
+						args.push(after);
+					}
+
+					Array.prototype.splice.apply(strarr, args);
+
+					if (delNum != 1)
+						_.matchGrammar(text, strarr, grammar, i, pos, true, token);
+
+					if (oneshot)
+						break;
+				}
+			}
+		}
+	},
+
+	tokenize: function(text, grammar, language) {
+		var strarr = [text];
+
+		var rest = grammar.rest;
+
+		if (rest) {
+			for (var token in rest) {
+				grammar[token] = rest[token];
+			}
+
+			delete grammar.rest;
+		}
+
+		_.matchGrammar(text, strarr, grammar, 0, 0, false);
+
+		return strarr;
+	},
+
+	hooks: {
+		all: {},
+
+		add: function (name, callback) {
+			var hooks = _.hooks.all;
+
+			hooks[name] = hooks[name] || [];
+
+			hooks[name].push(callback);
+		},
+
+		run: function (name, env) {
+			var callbacks = _.hooks.all[name];
+
+			if (!callbacks || !callbacks.length) {
+				return;
+			}
+
+			for (var i=0, callback; callback = callbacks[i++];) {
+				callback(env);
+			}
+		}
+	}
+};
+
+var Token = _.Token = function(type, content, alias, matchedStr, greedy) {
+	this.type = type;
+	this.content = content;
+	this.alias = alias;
+	// Copy of the full string this token was created from
+	this.length = (matchedStr || "").length|0;
+	this.greedy = !!greedy;
+};
+
+Token.stringify = function(o, language, parent) {
+	if (typeof o == 'string') {
+		return o;
+	}
+
+	if (_.util.type(o) === 'Array') {
+		return o.map(function(element) {
+			return Token.stringify(element, language, o);
+		}).join('');
+	}
+
+	var env = {
+		type: o.type,
+		content: Token.stringify(o.content, language, parent),
+		tag: 'span',
+		classes: ['token', o.type],
+		attributes: {},
+		language: language,
+		parent: parent
+	};
+
+	if (o.alias) {
+		var aliases = _.util.type(o.alias) === 'Array' ? o.alias : [o.alias];
+		Array.prototype.push.apply(env.classes, aliases);
+	}
+
+	_.hooks.run('wrap', env);
+
+	var attributes = Object.keys(env.attributes).map(function(name) {
+		return name + '="' + (env.attributes[name] || '').replace(/"/g, '&quot;') + '"';
+	}).join(' ');
+
+	return '<' + env.tag + ' class="' + env.classes.join(' ') + '"' + (attributes ? ' ' + attributes : '') + '>' + env.content + '</' + env.tag + '>';
+
+};
+
+if (!_self.document) {
+	if (!_self.addEventListener) {
+		// in Node.js
+		return _self.Prism;
+	}
+
+	if (!_.disableWorkerMessageHandler) {
+		// In worker
+		_self.addEventListener('message', function (evt) {
+			var message = JSON.parse(evt.data),
+				lang = message.language,
+				code = message.code,
+				immediateClose = message.immediateClose;
+
+			_self.postMessage(_.highlight(code, _.languages[lang], lang));
+			if (immediateClose) {
+				_self.close();
+			}
+		}, false);
+	}
+
+	return _self.Prism;
+}
+
+//Get current script and highlight
+var script = document.currentScript || [].slice.call(document.getElementsByTagName("script")).pop();
+
+if (script) {
+	_.filename = script.src;
+
+	if (!_.manual && !script.hasAttribute('data-manual')) {
+		if(document.readyState !== "loading") {
+			if (window.requestAnimationFrame) {
+				window.requestAnimationFrame(_.highlightAll);
+			} else {
+				window.setTimeout(_.highlightAll, 16);
+			}
+		}
+		else {
+			document.addEventListener('DOMContentLoaded', _.highlightAll);
+		}
+	}
+}
+
+return _self.Prism;
+
+})();
+
+if (typeof module !== 'undefined' && module.exports) {
+	module.exports = Prism;
+}
+
+// hack for components to work correctly in node.js
+if (typeof global !== 'undefined') {
+	global.Prism = Prism;
+}
+
+
+/* **********************************************
+     Begin prism-markup.js
+********************************************** */
+
+Prism.languages.markup = {
+	'comment': /<!--[\s\S]*?-->/,
+	'prolog': /<\?[\s\S]+?\?>/,
+	'doctype': /<!DOCTYPE[\s\S]+?>/i,
+	'cdata': /<!\[CDATA\[[\s\S]*?]]>/i,
+	'tag': {
+		pattern: /<\/?(?!\d)[^\s>\/=$<]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+))?)*\s*\/?>/i,
+		inside: {
+			'tag': {
+				pattern: /^<\/?[^\s>\/]+/i,
+				inside: {
+					'punctuation': /^<\/?/,
+					'namespace': /^[^\s>\/:]+:/
+				}
+			},
+			'attr-value': {
+				pattern: /=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+)/i,
+				inside: {
+					'punctuation': [
+						/^=/,
+						{
+							pattern: /(^|[^\\])["']/,
+							lookbehind: true
+						}
+					]
+				}
+			},
+			'punctuation': /\/?>/,
+			'attr-name': {
+				pattern: /[^\s>\/]+/,
+				inside: {
+					'namespace': /^[^\s>\/:]+:/
+				}
+			}
+
+		}
+	},
+	'entity': /&#?[\da-z]{1,8};/i
+};
+
+Prism.languages.markup['tag'].inside['attr-value'].inside['entity'] =
+	Prism.languages.markup['entity'];
+
+// Plugin to make entity title show the real entity, idea by Roman Komarov
+Prism.hooks.add('wrap', function(env) {
+
+	if (env.type === 'entity') {
+		env.attributes['title'] = env.content.replace(/&amp;/, '&');
+	}
+});
+
+Prism.languages.xml = Prism.languages.markup;
+Prism.languages.html = Prism.languages.markup;
+Prism.languages.mathml = Prism.languages.markup;
+Prism.languages.svg = Prism.languages.markup;
+
+
+/* **********************************************
+     Begin prism-css.js
+********************************************** */
+
+Prism.languages.css = {
+	'comment': /\/\*[\s\S]*?\*\//,
+	'atrule': {
+		pattern: /@[\w-]+?.*?(?:;|(?=\s*\{))/i,
+		inside: {
+			'rule': /@[\w-]+/
+			// See rest below
+		}
+	},
+	'url': /url\((?:(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1|.*?)\)/i,
+	'selector': /[^{}\s][^{};]*?(?=\s*\{)/,
+	'string': {
+		pattern: /("|')(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,
+		greedy: true
+	},
+	'property': /[-_a-z\xA0-\uFFFF][-\w\xA0-\uFFFF]*(?=\s*:)/i,
+	'important': /\B!important\b/i,
+	'function': /[-a-z0-9]+(?=\()/i,
+	'punctuation': /[(){};:]/
+};
+
+Prism.languages.css['atrule'].inside.rest = Prism.util.clone(Prism.languages.css);
+
+if (Prism.languages.markup) {
+	Prism.languages.insertBefore('markup', 'tag', {
+		'style': {
+			pattern: /(<style[\s\S]*?>)[\s\S]*?(?=<\/style>)/i,
+			lookbehind: true,
+			inside: Prism.languages.css,
+			alias: 'language-css',
+			greedy: true
+		}
+	});
+
+	Prism.languages.insertBefore('inside', 'attr-value', {
+		'style-attr': {
+			pattern: /\s*style=("|')(?:\\[\s\S]|(?!\1)[^\\])*\1/i,
+			inside: {
+				'attr-name': {
+					pattern: /^\s*style/i,
+					inside: Prism.languages.markup.tag.inside
+				},
+				'punctuation': /^\s*=\s*['"]|['"]\s*$/,
+				'attr-value': {
+					pattern: /.+/i,
+					inside: Prism.languages.css
+				}
+			},
+			alias: 'language-css'
+		}
+	}, Prism.languages.markup.tag);
+}
+
+/* **********************************************
+     Begin prism-clike.js
+********************************************** */
+
+Prism.languages.clike = {
+	'comment': [
+		{
+			pattern: /(^|[^\\])\/\*[\s\S]*?(?:\*\/|$)/,
+			lookbehind: true
+		},
+		{
+			pattern: /(^|[^\\:])\/\/.*/,
+			lookbehind: true
+		}
+	],
+	'string': {
+		pattern: /(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,
+		greedy: true
+	},
+	'class-name': {
+		pattern: /((?:\b(?:class|interface|extends|implements|trait|instanceof|new)\s+)|(?:catch\s+\())[\w.\\]+/i,
+		lookbehind: true,
+		inside: {
+			punctuation: /[.\\]/
+		}
+	},
+	'keyword': /\b(?:if|else|while|do|for|return|in|instanceof|function|new|try|throw|catch|finally|null|break|continue)\b/,
+	'boolean': /\b(?:true|false)\b/,
+	'function': /[a-z0-9_]+(?=\()/i,
+	'number': /\b-?(?:0x[\da-f]+|\d*\.?\d+(?:e[+-]?\d+)?)\b/i,
+	'operator': /--?|\+\+?|!=?=?|<=?|>=?|==?=?|&&?|\|\|?|\?|\*|\/|~|\^|%/,
+	'punctuation': /[{}[\];(),.:]/
+};
+
+
+/* **********************************************
+     Begin prism-javascript.js
+********************************************** */
+
+Prism.languages.javascript = Prism.languages.extend('clike', {
+	'keyword': /\b(?:as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|var|void|while|with|yield)\b/,
+	'number': /\b-?(?:0[xX][\dA-Fa-f]+|0[bB][01]+|0[oO][0-7]+|\d*\.?\d+(?:[Ee][+-]?\d+)?|NaN|Infinity)\b/,
+	// Allow for all non-ASCII characters (See http://stackoverflow.com/a/2008444)
+	'function': /[_$a-z\xA0-\uFFFF][$\w\xA0-\uFFFF]*(?=\s*\()/i,
+	'operator': /-[-=]?|\+[+=]?|!=?=?|<<?=?|>>?>?=?|=(?:==?|>)?|&[&=]?|\|[|=]?|\*\*?=?|\/=?|~|\^=?|%=?|\?|\.{3}/
+});
+
+Prism.languages.insertBefore('javascript', 'keyword', {
+	'regex': {
+		pattern: /(^|[^/])\/(?!\/)(\[[^\]\r\n]+]|\\.|[^/\\\[\r\n])+\/[gimyu]{0,5}(?=\s*($|[\r\n,.;})]))/,
+		lookbehind: true,
+		greedy: true
+	},
+	// This must be declared before keyword because we use "function" inside the look-forward
+	'function-variable': {
+		pattern: /[_$a-z\xA0-\uFFFF][$\w\xA0-\uFFFF]*(?=\s*=\s*(?:function\b|(?:\([^()]*\)|[_$a-z\xA0-\uFFFF][$\w\xA0-\uFFFF]*)\s*=>))/i,
+		alias: 'function'
+	}
+});
+
+Prism.languages.insertBefore('javascript', 'string', {
+	'template-string': {
+		pattern: /`(?:\\[\s\S]|[^\\`])*`/,
+		greedy: true,
+		inside: {
+			'interpolation': {
+				pattern: /\$\{[^}]+\}/,
+				inside: {
+					'interpolation-punctuation': {
+						pattern: /^\$\{|\}$/,
+						alias: 'punctuation'
+					},
+					rest: Prism.languages.javascript
+				}
+			},
+			'string': /[\s\S]+/
+		}
+	}
+});
+
+if (Prism.languages.markup) {
+	Prism.languages.insertBefore('markup', 'tag', {
+		'script': {
+			pattern: /(<script[\s\S]*?>)[\s\S]*?(?=<\/script>)/i,
+			lookbehind: true,
+			inside: Prism.languages.javascript,
+			alias: 'language-javascript',
+			greedy: true
+		}
+	});
+}
+
+Prism.languages.js = Prism.languages.javascript;
+
+
+/* **********************************************
+     Begin prism-file-highlight.js
+********************************************** */
+
+(function () {
+	if (typeof self === 'undefined' || !self.Prism || !self.document || !document.querySelector) {
+		return;
+	}
+
+	self.Prism.fileHighlight = function() {
+
+		var Extensions = {
+			'js': 'javascript',
+			'py': 'python',
+			'rb': 'ruby',
+			'ps1': 'powershell',
+			'psm1': 'powershell',
+			'sh': 'bash',
+			'bat': 'batch',
+			'h': 'c',
+			'tex': 'latex'
+		};
+
+		Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+			var src = pre.getAttribute('data-src');
+
+			var language, parent = pre;
+			var lang = /\blang(?:uage)?-(?!\*)(\w+)\b/i;
+			while (parent && !lang.test(parent.className)) {
+				parent = parent.parentNode;
+			}
+
+			if (parent) {
+				language = (pre.className.match(lang) || [, ''])[1];
+			}
+
+			if (!language) {
+				var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+				language = Extensions[extension] || extension;
+			}
+
+			var code = document.createElement('code');
+			code.className = 'language-' + language;
+
+			pre.textContent = '';
+
+			code.textContent = 'Loading…';
+
+			pre.appendChild(code);
+
+			var xhr = new XMLHttpRequest();
+
+			xhr.open('GET', src, true);
+
+			xhr.onreadystatechange = function () {
+				if (xhr.readyState == 4) {
+
+					if (xhr.status < 400 && xhr.responseText) {
+						code.textContent = xhr.responseText;
+
+						Prism.highlightElement(code);
+					}
+					else if (xhr.status >= 400) {
+						code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+					}
+					else {
+						code.textContent = '✖ Error: File does not exist or is empty';
+					}
+				}
+			};
+
+			xhr.send(null);
+		});
+
+	};
+
+	document.addEventListener('DOMContentLoaded', self.Prism.fileHighlight);
+
+})();
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(18)))
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(20);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {"hmr":true}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(3)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../css-loader/index.js!../../postcss-loader/lib/index.js!../../sass-loader/lib/loader.js!./prism-okaidia.css", function() {
+			var newContent = require("!!../../css-loader/index.js!../../postcss-loader/lib/index.js!../../sass-loader/lib/loader.js!./prism-okaidia.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "/**\n * okaidia theme for JavaScript, CSS and HTML\n * Loosely based on Monokai textmate theme by http://www.monokai.nl/\n * @author ocodia\n */\ncode[class*=\"language-\"],\npre[class*=\"language-\"] {\n  color: #f8f8f2;\n  background: none;\n  text-shadow: 0 1px rgba(0, 0, 0, 0.3);\n  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;\n  text-align: left;\n  white-space: pre;\n  word-spacing: normal;\n  word-break: normal;\n  word-wrap: normal;\n  line-height: 1.5;\n  -moz-tab-size: 4;\n  -o-tab-size: 4;\n  tab-size: 4;\n  -webkit-hyphens: none;\n  -ms-hyphens: none;\n  hyphens: none; }\n\n/* Code blocks */\npre[class*=\"language-\"] {\n  padding: 1em;\n  margin: .5em 0;\n  overflow: auto;\n  border-radius: 0.3em; }\n\n:not(pre) > code[class*=\"language-\"],\npre[class*=\"language-\"] {\n  background: #272822; }\n\n/* Inline code */\n:not(pre) > code[class*=\"language-\"] {\n  padding: .1em;\n  border-radius: .3em;\n  white-space: normal; }\n\n.token.comment,\n.token.prolog,\n.token.doctype,\n.token.cdata {\n  color: slategray; }\n\n.token.punctuation {\n  color: #f8f8f2; }\n\n.namespace {\n  opacity: .7; }\n\n.token.property,\n.token.tag,\n.token.constant,\n.token.symbol,\n.token.deleted {\n  color: #f92672; }\n\n.token.boolean,\n.token.number {\n  color: #ae81ff; }\n\n.token.selector,\n.token.attr-name,\n.token.string,\n.token.char,\n.token.builtin,\n.token.inserted {\n  color: #a6e22e; }\n\n.token.operator,\n.token.entity,\n.token.url,\n.language-css .token.string,\n.style .token.string,\n.token.variable {\n  color: #f8f8f2; }\n\n.token.atrule,\n.token.attr-value,\n.token.function {\n  color: #e6db74; }\n\n.token.keyword {\n  color: #66d9ef; }\n\n.token.regex,\n.token.important {\n  color: #fd971f; }\n\n.token.important,\n.token.bold {\n  font-weight: bold; }\n\n.token.italic {\n  font-style: italic; }\n\n.token.entity {\n  cursor: help; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 21 */
+/***/ (function(module, exports) {
+
+(function() {
+
+var assign = Object.assign || function (obj1, obj2) {
+	for (var name in obj2) {
+		if (obj2.hasOwnProperty(name))
+			obj1[name] = obj2[name];
+	}
+	return obj1;
+}
+
+function NormalizeWhitespace(defaults) {
+	this.defaults = assign({}, defaults);
+}
+
+function toCamelCase(value) {
+	return value.replace(/-(\w)/g, function(match, firstChar) {
+		return firstChar.toUpperCase();
+	});
+}
+
+function tabLen(str) {
+	var res = 0;
+	for (var i = 0; i < str.length; ++i) {
+		if (str.charCodeAt(i) == '\t'.charCodeAt(0))
+			res += 3;
+	}
+	return str.length + res;
+}
+
+NormalizeWhitespace.prototype = {
+	setDefaults: function (defaults) {
+		this.defaults = assign(this.defaults, defaults);
+	},
+	normalize: function (input, settings) {
+		settings = assign(this.defaults, settings);
+
+		for (var name in settings) {
+			var methodName = toCamelCase(name);
+			if (name !== "normalize" && methodName !== 'setDefaults' &&
+					settings[name] && this[methodName]) {
+				input = this[methodName].call(this, input, settings[name]);
+			}
+		}
+
+		return input;
+	},
+
+	/*
+	 * Normalization methods
+	 */
+	leftTrim: function (input) {
+		return input.replace(/^\s+/, '');
+	},
+	rightTrim: function (input) {
+		return input.replace(/\s+$/, '');
+	},
+	tabsToSpaces: function (input, spaces) {
+		spaces = spaces|0 || 4;
+		return input.replace(/\t/g, new Array(++spaces).join(' '));
+	},
+	spacesToTabs: function (input, spaces) {
+		spaces = spaces|0 || 4;
+		return input.replace(new RegExp(' {' + spaces + '}', 'g'), '\t');
+	},
+	removeTrailing: function (input) {
+		return input.replace(/\s*?$/gm, '');
+	},
+	// Support for deprecated plugin remove-initial-line-feed
+	removeInitialLineFeed: function (input) {
+		return input.replace(/^(?:\r?\n|\r)/, '');
+	},
+	removeIndent: function (input) {
+		var indents = input.match(/^[^\S\n\r]*(?=\S)/gm);
+
+		if (!indents || !indents[0].length)
+			return input;
+
+		indents.sort(function(a, b){return a.length - b.length; });
+
+		if (!indents[0].length)
+			return input;
+
+		return input.replace(new RegExp('^' + indents[0], 'gm'), '');
+	},
+	indent: function (input, tabs) {
+		return input.replace(/^[^\S\n\r]*(?=\S)/gm, new Array(++tabs).join('\t') + '$&');
+	},
+	breakLines: function (input, characters) {
+		characters = (characters === true) ? 80 : characters|0 || 80;
+
+		var lines = input.split('\n');
+		for (var i = 0; i < lines.length; ++i) {
+			if (tabLen(lines[i]) <= characters)
+				continue;
+
+			var line = lines[i].split(/(\s+)/g),
+			    len = 0;
+
+			for (var j = 0; j < line.length; ++j) {
+				var tl = tabLen(line[j]);
+				len += tl;
+				if (len > characters) {
+					line[j] = '\n' + line[j];
+					len = tl;
+				}
+			}
+			lines[i] = line.join('');
+		}
+		return lines.join('\n');
+	}
+};
+
+// Support node modules
+if (typeof module !== 'undefined' && module.exports) {
+	module.exports = NormalizeWhitespace;
+}
+
+// Exit if prism is not loaded
+if (typeof Prism === 'undefined') {
+	return;
+}
+
+Prism.plugins.NormalizeWhitespace = new NormalizeWhitespace({
+	'remove-trailing': true,
+	'remove-indent': true,
+	'left-trim': true,
+	'right-trim': true,
+	/*'break-lines': 80,
+	'indent': 2,
+	'remove-initial-line-feed': false,
+	'tabs-to-spaces': 4,
+	'spaces-to-tabs': 4*/
+});
+
+Prism.hooks.add('before-sanity-check', function (env) {
+	var Normalizer = Prism.plugins.NormalizeWhitespace;
+
+	// Check settings
+	if (env.settings && env.settings['whitespace-normalization'] === false) {
+		return;
+	}
+
+	// Simple mode if there is no env.element
+	if ((!env.element || !env.element.parentNode) && env.code) {
+		env.code = Normalizer.normalize(env.code, env.settings);
+		return;
+	}
+
+	// Normal mode
+	var pre = env.element.parentNode;
+	var clsReg = /\bno-whitespace-normalization\b/;
+	if (!env.code || !pre || pre.nodeName.toLowerCase() !== 'pre' ||
+			clsReg.test(pre.className) || clsReg.test(env.element.className))
+		return;
+
+	var children = pre.childNodes,
+	    before = '',
+	    after = '',
+	    codeFound = false;
+
+	// Move surrounding whitespace from the <pre> tag into the <code> tag
+	for (var i = 0; i < children.length; ++i) {
+		var node = children[i];
+
+		if (node == env.element) {
+			codeFound = true;
+		} else if (node.nodeName === "#text") {
+			if (codeFound) {
+				after += node.nodeValue;
+			} else {
+				before += node.nodeValue;
+			}
+
+			pre.removeChild(node);
+			--i;
+		}
+	}
+
+	if (!env.element.children.length || !Prism.plugins.KeepMarkup) {
+		env.code = before + env.code + after;
+		env.code = Normalizer.normalize(env.code, env.settings);
+	} else {
+		// Preserve markup for keep-markup plugin
+		var html = before + env.element.innerHTML + after;
+		env.element.innerHTML = Normalizer.normalize(html, env.settings);
+		env.code = env.element.textContent;
+	}
+});
+
+}());
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _preact = __webpack_require__(0);
+
+var _icon = __webpack_require__(1);
+
+var _icon2 = _interopRequireDefault(_icon);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var GitHubContainer = function GitHubContainer() {
+  return (0, _preact.h)(
+    "section",
+    { className: "section github" },
+    (0, _preact.h)(
+      "header",
+      null,
+      (0, _preact.h)("span", {
+        className: "glyph",
+        dangerouslySetInnerHTML: (0, _icon2.default)("github", {
+          width: 32,
+          height: 32
+        })
+      }),
+      (0, _preact.h)(
+        "h2",
+        null,
+        "GitHub"
+      )
+    ),
+    (0, _preact.h)(
+      "p",
+      null,
+      "See",
+      " ",
+      (0, _preact.h)(
+        "a",
+        {
+          href: "https://github.com/qrize/qrize",
+          target: "_blank",
+          rel: "noopener noreferrer"
+        },
+        "https://github.com/qrize/qrize"
+      ),
+      " ",
+      "for more details."
+    )
+  );
+};
+
+exports.default = GitHubContainer;
+
+/***/ }),
+/* 23 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _preact = __webpack_require__(0);
+
+var _icon = __webpack_require__(1);
+
+var _icon2 = _interopRequireDefault(_icon);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var FooterContainer = function FooterContainer() {
+  return (0, _preact.h)(
+    "footer",
+    { "class": "footer" },
+    (0, _preact.h)(
+      "section",
+      { className: "section" },
+      (0, _preact.h)(
+        "p",
+        null,
+        "Copyright \xA9 ",
+        new Date().getFullYear(),
+        " ",
+        (0, _preact.h)(
+          "a",
+          { href: "http://goliney.com", target: "_blank", rel: "noopener noreferrer" },
+          "Sergey Goliney"
+        )
+      ),
+      (0, _preact.h)(
+        "p",
+        null,
+        "QR Code is a registered trademark of DENSO WAVE INCORPORATED."
+      ),
+      (0, _preact.h)(
+        "p",
+        null,
+        (0, _preact.h)(
+          "a",
+          {
+            href: "http://www.qrcode.com/en/faq.html#patentH2Title",
+            target: "_blank",
+            rel: "noopener noreferrer"
+          },
+          "http://www.qrcode.com/en/faq.html#patentH2Title"
+        )
+      )
+    )
+  );
+};
+
+exports.default = FooterContainer;
 
 /***/ })
 /******/ ]);
