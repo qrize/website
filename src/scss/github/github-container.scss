@@ -1,0 +1,10 @@
+.github {
+  header {
+    display: flex;
+    justify-content: center;
+
+    > *:not(:last-child) {
+      margin-right: 0.5em;
+    }
+  }
+}

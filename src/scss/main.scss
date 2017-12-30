@@ -4,7 +4,7 @@ $trans-duration: 100ms;
 $trans-func: ease-out;
 $trans: all $trans-duration $trans-func;
 $content_width: 80vw;
-$max_content_width: 1000px;
+$max_content_width: 800px;
 
 * {
   box-sizing: border-box;
@@ -29,6 +29,19 @@ body {
   color: $primary;
 }
 
+.main {
+  width: 100%;
+  height: 100%;
+}
+
+.section {
+  margin: 0 auto;
+  padding: 2rem;
+  width: $content_width;
+  max-width: $max_content_width;
+  box-sizing: content-box;
+}
+
 h1 {
   font-size: 2.5rem;
   font-weight: normal;
@@ -50,17 +63,8 @@ h3 {
   margin: 1em 0;
 }
 
-.main {
-  width: 100%;
-  height: 100%;
-}
-
-.section {
-  margin: 0 auto;
-  padding: 2rem;
-  width: $content_width;
-  max-width: $max_content_width;
-  box-sizing: content-box;
+p {
+  line-height: 1.5em;
 }
 
 strong {

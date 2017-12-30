@@ -21,8 +21,8 @@ const WhyQrizeContainer = () => (
           <h3>Less space</h3>
         </header>
         <p>
-          With QR codes taking less space on the web-page you are able to
-          accomodate more useful information
+          With QR codes taking less space on a page you are able to accomodate
+          more useful information
         </p>
       </li>
       <li>
@@ -49,8 +49,8 @@ const WhyQrizeContainer = () => (
           <h3>Simply awesome</h3>
         </header>
         <p>
-          Given the possibility to make smaller QR codes why would you keap them
-          originaly sized?
+          Given the possibility to make QR codes smaller, why would you keap
+          them originaly sized?
         </p>
       </li>
     </ul>

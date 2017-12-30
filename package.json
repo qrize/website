@@ -18,6 +18,7 @@
   "dependencies": {
     "feather-icons": "4.4.0",
     "preact": "8.2.6",
+    "prismjs": "^1.9.0",
     "qrize": "^0.3.0"
   },
   "devDependencies": {
