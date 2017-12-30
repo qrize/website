@@ -16,7 +16,6 @@
     padding: $padding;
     width: $qr_size;
     height: $qr_size;
-    max-width: 80vw;
     color: $primary;
     background: $base;
     overflow: hidden;
@@ -87,7 +86,8 @@
   &:focus,
   &:focus-within {
     figure {
-      width: $qr_size + $details_width;
+      width: 100%;
+      max-width: $qr_size + $details_width;
 
       .details-group {
         opacity: 1;
