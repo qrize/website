@@ -6,7 +6,7 @@ const FooterContainer = () => (
     <section className="section">
       <p>
         Copyright © {new Date().getFullYear()}{" "}
-        <a href="http://goliney.com" target="_blank" rel="noopener noreferrer">
+        <a href="https://goliney.com" target="_blank" rel="noopener noreferrer">
           Sergey Goliney
         </a>
       </p>

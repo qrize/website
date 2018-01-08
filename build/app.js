@@ -5947,7 +5947,7 @@ var FooterContainer = function FooterContainer() {
         " ",
         (0, _preact.h)(
           "a",
-          { href: "http://goliney.com", target: "_blank", rel: "noopener noreferrer" },
+          { href: "https://goliney.com", target: "_blank", rel: "noopener noreferrer" },
           "Sergey Goliney"
         )
       ),

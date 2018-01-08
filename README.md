@@ -1,3 +1,3 @@
 # qrize.me
 
-http://qrize.me
+https://qrize.me
