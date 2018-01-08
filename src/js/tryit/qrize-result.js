@@ -2,7 +2,7 @@ import { h, Component } from "preact";
 import Qrize from "qrize";
 import iconHtml from "../icon";
 
-const REDIRECTOR_ENDPOINT = "http://qrize.me/<hash>";
+const REDIRECTOR_ENDPOINT = "https://qrize.me/<hash>";
 
 // See: https://blog.qrstuff.com/2011/11/23/qr-code-minimum-size
 const QR_CODE_SIZES = [

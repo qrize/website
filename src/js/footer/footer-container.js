@@ -13,7 +13,7 @@ const FooterContainer = () => (
       <p>
         QR Code is a registered trademark of{" "}
         <a
-          href="http://www.qrcode.com/en/faq.html#patentH2Title"
+          href="https://www.qrcode.com/en/faq.html#patentH2Title"
           target="_blank"
           rel="noopener noreferrer"
         >
