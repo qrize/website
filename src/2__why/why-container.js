@@ -1,5 +1,6 @@
 import { h, render } from "preact";
-import iconHtml from "../icon";
+import "./why-container.scss";
+import iconHtml from "../utils/icon";
 
 const iconOptions = {
   width: 100,

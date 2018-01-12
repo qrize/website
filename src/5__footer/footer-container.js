@@ -1,5 +1,6 @@
 import { h, render } from "preact";
-import iconHtml from "../icon";
+import "./footer-container.scss";
+import iconHtml from "../utils/icon";
 
 const FooterContainer = () => (
   <footer class="footer">

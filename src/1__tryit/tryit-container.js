@@ -1,4 +1,5 @@
 import { h, Component } from "preact";
+import "./scss/tryit-container.scss";
 import TryItForm from "./tryit-form";
 
 const TryItContainer = () => (

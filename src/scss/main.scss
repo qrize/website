@@ -1,9 +1,5 @@
+@import 'variables';
 @import url('https://fonts.googleapis.com/css?family=Rubik:300,400');
-
-$trans-duration: 100ms;
-$trans-func: ease-out;
-$trans: all $trans-duration $trans-func;
-$max_content_width: 800px;
 
 * {
   box-sizing: border-box;

@@ -1,5 +1,6 @@
 import { h, render } from "preact";
-import iconHtml from "../icon";
+import "./github-container.scss";
+import iconHtml from "../utils/icon";
 
 const GitHubContainer = () => (
   <section className="section github">

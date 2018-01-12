@@ -1,6 +1,7 @@
 import { h, Component } from "preact";
 import Qrize from "qrize";
-import iconHtml from "../icon";
+import "./scss/qrize-result.scss";
+import iconHtml from "../utils/icon";
 
 const REDIRECTOR_ENDPOINT = "https://qrize.me/<hash>";
 

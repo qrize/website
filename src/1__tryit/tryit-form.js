@@ -1,5 +1,6 @@
 import { h, Component } from "preact";
-import iconHtml from "../icon";
+import "./scss/tryit-form.scss";
+import iconHtml from "../utils/icon";
 import QrizeResult from "./qrize-result";
 
 // See: https://github.com/qrize/qrize/blob/master/src/validators.js

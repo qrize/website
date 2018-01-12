@@ -1,6 +1,6 @@
 import { h, render } from "preact";
-import PrismCode from "../prism-code";
-import iconHtml from "../icon";
+import PrismCode from "../utils/prism-code";
+import iconHtml from "../utils/icon";
 
 const HowToUseContainer = () => (
   <section className="section how-to">
