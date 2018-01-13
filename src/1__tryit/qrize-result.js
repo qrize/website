@@ -1,9 +1,9 @@
-import { h, Component } from "preact";
-import Qrize from "qrize";
-import "./scss/qrize-result.scss";
-import iconHtml from "../utils/icon";
+import { h, Component } from 'preact';
+import Qrize from 'qrize';
+import './scss/qrize-result.scss';
+import iconHtml from '../utils/icon';
 
-const REDIRECTOR_ENDPOINT = "https://qrize.me/<hash>";
+const REDIRECTOR_ENDPOINT = 'https://qrize.me/<hash>';
 
 // See: https://blog.qrstuff.com/2011/11/23/qr-code-minimum-size
 const QR_CODE_SIZES = [
@@ -44,12 +44,12 @@ function getQRCodeSizeFromUrl({ length }) {
 class QrizeResult extends Component {
   constructor() {
     super();
-    this.state = { url: "", visible: false, time: null };
+    this.state = { url: '', visible: false, time: null };
   }
 
   componentDidMount() {
     this.qrize = new Qrize({
-      element: document.getElementById("qr-target"),
+      element: document.getElementById('qr-target'),
       cellSize: 5
     });
   }
@@ -71,12 +71,11 @@ class QrizeResult extends Component {
     this.qrize.createImg({
       url,
       onSuccess: ({ hash }) => {
-        console.debug("QR code has been built");
-        const redirectorUrl = REDIRECTOR_ENDPOINT.replace("<hash>", hash);
+        console.debug('QR code has been built');
+        const redirectorUrl = REDIRECTOR_ENDPOINT.replace('<hash>', hash);
         const time = Math.round(performance.now() - startTime);
         const minificationRatio =
-          getQRCodeSizeFromUrl(this.props.url) /
-          getQRCodeSizeFromUrl(redirectorUrl);
+          getQRCodeSizeFromUrl(this.props.url) / getQRCodeSizeFromUrl(redirectorUrl);
         this.setState({
           visible: true,
           redirectorUrl,
@@ -93,10 +92,7 @@ class QrizeResult extends Component {
 
   render() {
     return (
-      <div
-        className={`qr-holder ${this.state.visible ? "" : "hide"}`}
-        tabindex="0"
-      >
+      <div className={`qr-holder ${this.state.visible ? '' : 'hide'}`} tabindex="0">
         <figure>
           <div id="qr-target" />
           <figcaption className="details">
@@ -106,18 +102,14 @@ class QrizeResult extends Component {
                 <span
                   className="glyph"
                   aria-label="Short link"
-                  dangerouslySetInnerHTML={iconHtml("link-2", {
+                  dangerouslySetInnerHTML={iconHtml('link-2', {
                     width: 16,
                     height: 16
                   })}
                 />
               </dt>
               <dd title="Short link that leads to the original url">
-                <a
-                  href={this.state.redirectorUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href={this.state.redirectorUrl} target="_blank" rel="noopener noreferrer">
                   {this.state.redirectorUrl}
                 </a>
               </dd>
@@ -128,16 +120,13 @@ class QrizeResult extends Component {
                 <span
                   className="glyph"
                   aria-label="Time taken"
-                  dangerouslySetInnerHTML={iconHtml("zap", {
+                  dangerouslySetInnerHTML={iconHtml('zap', {
                     width: 18,
                     height: 18
                   })}
                 />
               </dt>
-              <dd
-                title={`It took ${this.state
-                  .time}ms to shorten a link and render a QR code`}
-              >
+              <dd title={`It took ${this.state.time}ms to shorten a link and render a QR code`}>
                 Rendered in {this.state.time}ms
               </dd>
             </dl>
@@ -147,7 +136,7 @@ class QrizeResult extends Component {
                 <span
                   className="glyph"
                   aria-label="Times smaller"
-                  dangerouslySetInnerHTML={iconHtml("minimize-2", {
+                  dangerouslySetInnerHTML={iconHtml('minimize-2', {
                     width: 18,
                     height: 18
                   })}
@@ -156,20 +145,19 @@ class QrizeResult extends Component {
               <dd
                 title={
                   this.state.minificationRatio > 1
-                    ? `Qrized QR code is ${this.state
-                        .minificationRatio} times smaller than regular`
-                    : "The size of a minified QR code is the same as of regular"
+                    ? `Qrized QR code is ${this.state.minificationRatio} times smaller than regular`
+                    : 'The size of a minified QR code is the same as of regular'
                 }
               >
                 {this.state.minificationRatio}x smaller
-                {this.state.minificationRatio > 1 ? "" : " (try longer url)"}
+                {this.state.minificationRatio > 1 ? '' : ' (try longer url)'}
               </dd>
             </dl>
           </figcaption>
         </figure>
         <span class="hint">
           <span
-            dangerouslySetInnerHTML={iconHtml("corner-left-up", {
+            dangerouslySetInnerHTML={iconHtml('corner-left-up', {
               width: 18,
               height: 18
             })}

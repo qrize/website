@@ -1,7 +1,7 @@
-import { h, Component } from "preact";
-import "./scss/tryit-form.scss";
-import iconHtml from "../utils/icon";
-import QrizeResult from "./qrize-result";
+import { h, Component } from 'preact';
+import './scss/tryit-form.scss';
+import iconHtml from '../utils/icon';
+import QrizeResult from './qrize-result';
 
 // See: https://github.com/qrize/qrize/blob/master/src/validators.js
 const urlRegExp = {
@@ -17,7 +17,7 @@ urlRegExp.composed = new RegExp(
     `(?:${urlRegExp.domain.source}|localhost|${urlRegExp.ip.source})` +
     `${urlRegExp.port.source}?` +
     `${urlRegExp.query.source}$`,
-  "i"
+  'i'
 );
 
 function isUrlValid(url) {
@@ -27,7 +27,7 @@ function isUrlValid(url) {
 class TryItForm extends Component {
   constructor() {
     super();
-    this.state = { url: "", input: "", errorMessage: "", hasQR: false };
+    this.state = { url: '', input: '', errorMessage: '', hasQR: false };
 
     this.handleInput = this.handleInput.bind(this);
     this.handlePaste = this.handlePaste.bind(this);
@@ -38,8 +38,8 @@ class TryItForm extends Component {
   handleInput(event) {
     this.setState({
       input: event.target.value,
-      url: "",
-      errorMessage: ""
+      url: '',
+      errorMessage: ''
     });
   }
 
@@ -53,7 +53,7 @@ class TryItForm extends Component {
   }
 
   handleReset() {
-    this.setState({ input: "", url: "", errorMessage: "" });
+    this.setState({ input: '', url: '', errorMessage: '' });
     this.urlInputEl.focus();
   }
 
@@ -64,12 +64,12 @@ class TryItForm extends Component {
 
   getQR() {
     if (!this.state.input) {
-      this.setState({ errorMessage: "Please, provide a link" });
+      this.setState({ errorMessage: 'Please, provide a link' });
       return;
     }
     if (!isUrlValid(this.state.input)) {
       this.setState({
-        errorMessage: "Unable to qrize this link. It is not a valid url"
+        errorMessage: 'Unable to qrize this link. It is not a valid url'
       });
       return;
     }
@@ -81,9 +81,7 @@ class TryItForm extends Component {
   }
 
   handleQRStatusUpdate(error) {
-    const errorMessage = error
-      ? `API error ${error.errorStatus}: ${error.errorText}`
-      : "";
+    const errorMessage = error ? `API error ${error.errorStatus}: ${error.errorText}` : '';
     this.setState({ errorMessage, hasQR: !error && this.state.url });
   }
 
@@ -91,7 +89,7 @@ class TryItForm extends Component {
     return (
       <form
         onSubmit={this.handleSubmit}
-        className={`tryit-form ${this.state.hasQR ? "has-qr" : ""}`}
+        className={`tryit-form ${this.state.hasQR ? 'has-qr' : ''}`}
         autocomplete="off"
       >
         <div role="group" className="input-group">
@@ -114,41 +112,32 @@ class TryItForm extends Component {
           <button
             type="button"
             onClick={this.handleReset}
-            className={`reset-btn ${this.state.input.length > 0 ? "show" : ""}`}
-            dangerouslySetInnerHTML={iconHtml("x", { "stroke-width": 1 })}
+            className={`reset-btn ${this.state.input.length > 0 ? 'show' : ''}`}
+            dangerouslySetInnerHTML={iconHtml('x', { 'stroke-width': 1 })}
             title="Clear input"
             aria-label="Clear input"
           />
           {/* submit button */}
-          <button
-            type="submit"
-            className="submit-btn"
-            disabled={this.state.hasQR}
-          >
+          <button type="submit" className="submit-btn" disabled={this.state.hasQR}>
             <span className="button-content">
               {this.state.hasQR
                 ? [
                     <span
                       aria-hidden="true"
-                      dangerouslySetInnerHTML={iconHtml("check", {
-                        "stroke-width": 1
+                      dangerouslySetInnerHTML={iconHtml('check', {
+                        'stroke-width': 1
                       })}
                     />,
                     <span>Done</span>
                   ]
-                : "Get QR code"}
+                : 'Get QR code'}
             </span>
           </button>
           {/* error message */}
-          <div class={`error ${this.state.errorMessage && "show"}`}>
-            {this.state.errorMessage}
-          </div>
+          <div class={`error ${this.state.errorMessage && 'show'}`}>{this.state.errorMessage}</div>
         </div>
         {/* QR code */}
-        <QrizeResult
-          url={this.state.url}
-          onQRStatusUpdate={this.handleQRStatusUpdate.bind(this)}
-        />
+        <QrizeResult url={this.state.url} onQRStatusUpdate={this.handleQRStatusUpdate.bind(this)} />
       </form>
     );
   }

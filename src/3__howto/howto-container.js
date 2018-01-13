@@ -1,6 +1,6 @@
-import { h, render } from "preact";
-import PrismCode from "../utils/prism-code";
-import iconHtml from "../utils/icon";
+import { h, render } from 'preact';
+import PrismCode from '../utils/prism-code';
+import iconHtml from '../utils/icon';
 
 const HowToUseContainer = () => (
   <section className="section how-to">
@@ -33,8 +33,8 @@ const HowToUseContainer = () => (
     </PrismCode>
 
     <p>
-      That's it. Now an element wih "qr-target" id contains tiny QR code that
-      leads to the url you specified.
+      That's it. Now an element wih "qr-target" id contains tiny QR code that leads to the url you
+      specified.
     </p>
   </section>
 );

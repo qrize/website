@@ -1,11 +1,11 @@
-import { h, render } from "preact";
-import "./why-container.scss";
-import iconHtml from "../utils/icon";
+import { h, render } from 'preact';
+import './why-container.scss';
+import iconHtml from '../utils/icon';
 
 const iconOptions = {
   width: 100,
   height: 100,
-  "stroke-width": 1
+  'stroke-width': 1
 };
 
 const WhyQrizeContainer = () => (
@@ -17,13 +17,13 @@ const WhyQrizeContainer = () => (
           <span
             className="glyph"
             aria-hidden="true"
-            dangerouslySetInnerHTML={iconHtml("minimize", iconOptions)}
+            dangerouslySetInnerHTML={iconHtml('minimize', iconOptions)}
           />
           <h3>Less space</h3>
         </header>
         <p>
-          With QR codes taking less space on a page you are able to accomodate
-          more useful information
+          With QR codes taking less space on a page you are able to accomodate more useful
+          information
         </p>
       </li>
       <li>
@@ -31,13 +31,13 @@ const WhyQrizeContainer = () => (
           <span
             className="glyph"
             aria-hidden="true"
-            dangerouslySetInnerHTML={iconHtml("smartphone", iconOptions)}
+            dangerouslySetInnerHTML={iconHtml('smartphone', iconOptions)}
           />
           <h3>Readers friendly</h3>
         </header>
         <p>
-          Qrize produces QR codes with constanly low density of dots (modules)
-          making them more readable by mobile devices
+          Qrize produces QR codes with constanly low density of dots (modules) making them more
+          readable by mobile devices
         </p>
       </li>
       <li>
@@ -45,13 +45,12 @@ const WhyQrizeContainer = () => (
           <span
             className="glyph"
             aria-hidden="true"
-            dangerouslySetInnerHTML={iconHtml("star", iconOptions)}
+            dangerouslySetInnerHTML={iconHtml('star', iconOptions)}
           />
           <h3>Simply awesome</h3>
         </header>
         <p>
-          Given the possibility to make QR codes smaller, why would you keep
-          them originaly sized?
+          Given the possibility to make QR codes smaller, why would you keep them originaly sized?
         </p>
       </li>
     </ul>

@@ -13,7 +13,8 @@
   ],
   "rules": {
     "no-unused-vars": [0, { "varsIgnorePattern": "^h$" }],
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "no-console": ["error", { "allow": ["debug"] }]
   },
   "parserOptions": {
     "ecmaFeatures": {

@@ -1,7 +1,7 @@
-import { h, Component } from "preact";
-import Prism from "prismjs";
-import "prismjs/themes/prism-okaidia.css";
-import "prismjs/plugins/normalize-whitespace/prism-normalize-whitespace";
+import { h, Component } from 'preact';
+import Prism from 'prismjs';
+import 'prismjs/themes/prism-okaidia.css';
+import 'prismjs/plugins/normalize-whitespace/prism-normalize-whitespace';
 
 class PrismCode extends Component {
   componentDidMount() {

@@ -1,13 +1,13 @@
-import { h, render } from "preact";
-import "./github-container.scss";
-import iconHtml from "../utils/icon";
+import { h, render } from 'preact';
+import './github-container.scss';
+import iconHtml from '../utils/icon';
 
 const GitHubContainer = () => (
   <section className="section github">
     <header>
       <span
         className="glyph"
-        dangerouslySetInnerHTML={iconHtml("github", {
+        dangerouslySetInnerHTML={iconHtml('github', {
           width: 32,
           height: 32
         })}
@@ -16,14 +16,10 @@ const GitHubContainer = () => (
     </header>
 
     <p>
-      Go to{" "}
-      <a
-        href="https://github.com/qrize/qrize"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      Go to{' '}
+      <a href="https://github.com/qrize/qrize" target="_blank" rel="noopener noreferrer">
         https://github.com/qrize/qrize
-      </a>{" "}
+      </a>{' '}
       if you need more details or have a question.
     </p>
   </section>

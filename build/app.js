@@ -111,10 +111,33 @@ var stack = [];
 
 var EMPTY_CHILDREN = [];
 
-/** JSX/hyperscript reviver
-*	Benchmarks: https://esbench.com/bench/57ee8f8e330ab09900a1a1a0
- *	@see http://jasonformat.com/wtf-is-jsx
- *	@public
+/**
+ * JSX/hyperscript reviver.
+ * @see http://jasonformat.com/wtf-is-jsx
+ * Benchmarks: https://esbench.com/bench/57ee8f8e330ab09900a1a1a0
+ *
+ * Note: this is exported as both `h()` and `createElement()` for compatibility reasons.
+ *
+ * Creates a VNode (virtual DOM element). A tree of VNodes can be used as a lightweight representation
+ * of the structure of a DOM tree. This structure can be realized by recursively comparing it against
+ * the current _actual_ DOM structure, and applying only the differences.
+ *
+ * `h()`/`createElement()` accepts an element name, a list of attributes/props,
+ * and optionally children to append to the element.
+ *
+ * @example The following DOM tree
+ *
+ * `<div id="foo" name="bar">Hello!</div>`
+ *
+ * can be constructed using this function as:
+ *
+ * `h('div', { id: 'foo', name : 'bar' }, 'Hello!');`
+ *
+ * @param {string} nodeName	An element name. Ex: `div`, `a`, `span`, etc.
+ * @param {Object} attributes	Any attributes/props to set on the created element.
+ * @param rest			Additional arguments are taken to be children to append. Can be infinitely nested Arrays.
+ *
+ * @public
  */
 function h(nodeName, attributes) {
 	var children = EMPTY_CHILDREN,
@@ -165,9 +188,12 @@ function h(nodeName, attributes) {
 	return p;
 }
 
-/** Copy own-properties from `props` onto `obj`.
- *	@returns obj
- *	@private
+/**
+ *  Copy all properties from `props` onto `obj`.
+ *  @param {Object} obj		Object onto which properties should be copied.
+ *  @param {Object} props	Object from which to copy properties.
+ *  @returns obj
+ *  @private
  */
 function extend(obj, props) {
   for (var i in props) {
@@ -175,13 +201,23 @@ function extend(obj, props) {
   }return obj;
 }
 
-/** Call a function asynchronously, as soon as possible.
- *	@param {Function} callback
+/**
+ * Call a function asynchronously, as soon as possible. Makes
+ * use of HTML Promise to schedule the callback if available,
+ * otherwise falling back to `setTimeout` (mainly for IE<11).
+ *
+ * @param {Function} callback
  */
 var defer = typeof Promise == 'function' ? Promise.resolve().then.bind(Promise.resolve()) : setTimeout;
 
+/**
+ * Clones the given VNode, optionally adding attributes/props and replacing its children.
+ * @param {VNode} vnode		The virutal DOM element to clone
+ * @param {Object} props	Attributes/props to add when cloning
+ * @param {VNode} rest		Any additional arguments will be used as replacement children.
+ */
 function cloneElement(vnode, props) {
-	return h(vnode.nodeName, extend(extend({}, vnode.attributes), props), arguments.length > 2 ? [].slice.call(arguments, 2) : vnode.children);
+  return h(vnode.nodeName, extend(extend({}, vnode.attributes), props), arguments.length > 2 ? [].slice.call(arguments, 2) : vnode.children);
 }
 
 // DOM properties that should NOT have "px" added when numeric
@@ -206,50 +242,56 @@ function rerender() {
 	}
 }
 
-/** Check if two nodes are equivalent.
- *	@param {Element} node
- *	@param {VNode} vnode
- *	@private
+/**
+ * Check if two nodes are equivalent.
+ *
+ * @param {Node} node			DOM Node to compare
+ * @param {VNode} vnode			Virtual DOM node to compare
+ * @param {boolean} [hyrdating=false]	If true, ignores component constructors when comparing.
+ * @private
  */
 function isSameNodeType(node, vnode, hydrating) {
-	if (typeof vnode === 'string' || typeof vnode === 'number') {
-		return node.splitText !== undefined;
-	}
-	if (typeof vnode.nodeName === 'string') {
-		return !node._componentConstructor && isNamedNode(node, vnode.nodeName);
-	}
-	return hydrating || node._componentConstructor === vnode.nodeName;
+  if (typeof vnode === 'string' || typeof vnode === 'number') {
+    return node.splitText !== undefined;
+  }
+  if (typeof vnode.nodeName === 'string') {
+    return !node._componentConstructor && isNamedNode(node, vnode.nodeName);
+  }
+  return hydrating || node._componentConstructor === vnode.nodeName;
 }
 
-/** Check if an Element has a given normalized name.
-*	@param {Element} node
-*	@param {String} nodeName
+/**
+ * Check if an Element has a given nodeName, case-insensitively.
+ *
+ * @param {Element} node	A DOM Element to inspect the name of.
+ * @param {String} nodeName	Unnormalized name to compare against.
  */
 function isNamedNode(node, nodeName) {
-	return node.normalizedNodeName === nodeName || node.nodeName.toLowerCase() === nodeName.toLowerCase();
+  return node.normalizedNodeName === nodeName || node.nodeName.toLowerCase() === nodeName.toLowerCase();
 }
 
 /**
  * Reconstruct Component-style `props` from a VNode.
  * Ensures default/fallback values from `defaultProps`:
  * Own-properties of `defaultProps` not present in `vnode.attributes` are added.
+ *
  * @param {VNode} vnode
  * @returns {Object} props
  */
 function getNodeProps(vnode) {
-	var props = extend({}, vnode.attributes);
-	props.children = vnode.children;
+  var props = extend({}, vnode.attributes);
+  props.children = vnode.children;
 
-	var defaultProps = vnode.nodeName.defaultProps;
-	if (defaultProps !== undefined) {
-		for (var i in defaultProps) {
-			if (props[i] === undefined) {
-				props[i] = defaultProps[i];
-			}
-		}
-	}
+  var defaultProps = vnode.nodeName.defaultProps;
+  if (defaultProps !== undefined) {
+    for (var i in defaultProps) {
+      if (props[i] === undefined) {
+        props[i] = defaultProps[i];
+      }
+    }
+  }
 
-	return props;
+  return props;
 }
 
 /** Create an element with the given nodeName.
@@ -1194,7 +1236,7 @@ module.exports = function(list, options) {
 
 	// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
 	// tags it will allow on a page
-	if (!options.singleton) options.singleton = isOldIE();
+	if (!options.singleton && typeof options.singleton !== "boolean") options.singleton = isOldIE();
 
 	// By default, add <style> tags to the <head> element
 	if (!options.insertInto) options.insertInto = "head";
@@ -1602,7 +1644,7 @@ if(false) {
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(1)(undefined);
+exports = module.exports = __webpack_require__(1)(false);
 // imports
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Rubik:300,400);", ""]);
 
@@ -1730,40 +1772,40 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var TryItContainer = function TryItContainer() {
   return (0, _preact.h)(
-    "div",
-    { className: "try-it" },
+    'div',
+    { className: 'try-it' },
     (0, _preact.h)(
-      "section",
-      { className: "section" },
+      'section',
+      { className: 'section' },
       (0, _preact.h)(
-        "header",
+        'header',
         null,
         (0, _preact.h)(
-          "h1",
-          { className: "title" },
+          'h1',
+          { className: 'title' },
           (0, _preact.h)(
-            "strong",
+            'strong',
             null,
-            "QR code"
+            'QR code'
           ),
-          " and ",
+          ' and ',
           (0, _preact.h)(
-            "strong",
+            'strong',
             null,
-            "URL shortener"
+            'URL shortener'
           ),
-          " got married."
+          ' got married.'
         ),
         (0, _preact.h)(
-          "p",
-          { "class": "try-qrize" },
-          "Create ",
+          'p',
+          { 'class': 'try-qrize' },
+          'Create ',
           (0, _preact.h)(
-            "strong",
+            'strong',
             null,
-            "tiny QR codes"
+            'tiny QR codes'
           ),
-          " for your web-pages. Check it out:"
+          ' for your web-pages. Check it out:'
         )
       ),
       (0, _preact.h)(_tryitForm2.default, null)
@@ -1808,7 +1850,7 @@ if(false) {
 /* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(1)(undefined);
+exports = module.exports = __webpack_require__(1)(false);
 // imports
 
 
@@ -1860,7 +1902,7 @@ var urlRegExp = {
   query: /(?:\/?|[/?]\S+)/
 };
 
-urlRegExp.composed = new RegExp("^" + urlRegExp.shema.source + "?" + ("(?:" + urlRegExp.domain.source + "|localhost|" + urlRegExp.ip.source + ")") + (urlRegExp.port.source + "?") + (urlRegExp.query.source + "$"), "i");
+urlRegExp.composed = new RegExp('^' + urlRegExp.shema.source + '?' + ('(?:' + urlRegExp.domain.source + '|localhost|' + urlRegExp.ip.source + ')') + (urlRegExp.port.source + '?') + (urlRegExp.query.source + '$'), 'i');
 
 function isUrlValid(url) {
   return urlRegExp.composed.test(url);
@@ -1874,7 +1916,7 @@ var TryItForm = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (TryItForm.__proto__ || Object.getPrototypeOf(TryItForm)).call(this));
 
-    _this.state = { url: "", input: "", errorMessage: "", hasQR: false };
+    _this.state = { url: '', input: '', errorMessage: '', hasQR: false };
 
     _this.handleInput = _this.handleInput.bind(_this);
     _this.handlePaste = _this.handlePaste.bind(_this);
@@ -1884,16 +1926,16 @@ var TryItForm = function (_Component) {
   }
 
   _createClass(TryItForm, [{
-    key: "handleInput",
+    key: 'handleInput',
     value: function handleInput(event) {
       this.setState({
         input: event.target.value,
-        url: "",
-        errorMessage: ""
+        url: '',
+        errorMessage: ''
       });
     }
   }, {
-    key: "handlePaste",
+    key: 'handlePaste',
     value: function handlePaste() {
       var _this2 = this;
 
@@ -1905,112 +1947,105 @@ var TryItForm = function (_Component) {
       }, 0);
     }
   }, {
-    key: "handleReset",
+    key: 'handleReset',
     value: function handleReset() {
-      this.setState({ input: "", url: "", errorMessage: "" });
+      this.setState({ input: '', url: '', errorMessage: '' });
       this.urlInputEl.focus();
     }
   }, {
-    key: "handleSubmit",
+    key: 'handleSubmit',
     value: function handleSubmit(event) {
       event.preventDefault();
       this.getQR();
     }
   }, {
-    key: "getQR",
+    key: 'getQR',
     value: function getQR() {
       if (!this.state.input) {
-        this.setState({ errorMessage: "Please, provide a link" });
+        this.setState({ errorMessage: 'Please, provide a link' });
         return;
       }
       if (!isUrlValid(this.state.input)) {
         this.setState({
-          errorMessage: "Unable to qrize this link. It is not a valid url"
+          errorMessage: 'Unable to qrize this link. It is not a valid url'
         });
         return;
       }
       this.setState({ url: this.state.input }); // pass url to TryitResult
     }
   }, {
-    key: "showErrorMessage",
+    key: 'showErrorMessage',
     value: function showErrorMessage(errorMessage) {
       this.setState({ errorMessage: errorMessage });
     }
   }, {
-    key: "handleQRStatusUpdate",
+    key: 'handleQRStatusUpdate',
     value: function handleQRStatusUpdate(error) {
-      var errorMessage = error ? "API error " + error.errorStatus + ": " + error.errorText : "";
+      var errorMessage = error ? 'API error ' + error.errorStatus + ': ' + error.errorText : '';
       this.setState({ errorMessage: errorMessage, hasQR: !error && this.state.url });
     }
   }, {
-    key: "render",
+    key: 'render',
     value: function render() {
       var _this3 = this;
 
       return (0, _preact.h)(
-        "form",
+        'form',
         {
           onSubmit: this.handleSubmit,
-          className: "tryit-form " + (this.state.hasQR ? "has-qr" : ""),
-          autocomplete: "off"
+          className: 'tryit-form ' + (this.state.hasQR ? 'has-qr' : ''),
+          autocomplete: 'off'
         },
         (0, _preact.h)(
-          "div",
-          { role: "group", className: "input-group" },
-          (0, _preact.h)("input", {
-            type: "text",
-            name: "url",
-            className: "url-input",
-            placeholder: "Paste a link",
+          'div',
+          { role: 'group', className: 'input-group' },
+          (0, _preact.h)('input', {
+            type: 'text',
+            name: 'url',
+            className: 'url-input',
+            placeholder: 'Paste a link',
             ref: function ref(input) {
               _this3.urlInputEl = input;
             },
             value: this.state.input,
             onInput: this.handleInput,
             onPaste: this.handlePaste,
-            spellCheck: "false",
+            spellCheck: 'false',
             autofocus: true
           }),
-          (0, _preact.h)("button", {
-            type: "button",
+          (0, _preact.h)('button', {
+            type: 'button',
             onClick: this.handleReset,
-            className: "reset-btn " + (this.state.input.length > 0 ? "show" : ""),
-            dangerouslySetInnerHTML: (0, _icon2.default)("x", { "stroke-width": 1 }),
-            title: "Clear input",
-            "aria-label": "Clear input"
+            className: 'reset-btn ' + (this.state.input.length > 0 ? 'show' : ''),
+            dangerouslySetInnerHTML: (0, _icon2.default)('x', { 'stroke-width': 1 }),
+            title: 'Clear input',
+            'aria-label': 'Clear input'
           }),
           (0, _preact.h)(
-            "button",
-            {
-              type: "submit",
-              className: "submit-btn",
-              disabled: this.state.hasQR
-            },
+            'button',
+            { type: 'submit', className: 'submit-btn', disabled: this.state.hasQR },
             (0, _preact.h)(
-              "span",
-              { className: "button-content" },
-              this.state.hasQR ? [(0, _preact.h)("span", {
-                "aria-hidden": "true",
-                dangerouslySetInnerHTML: (0, _icon2.default)("check", {
-                  "stroke-width": 1
+              'span',
+              { className: 'button-content' },
+              this.state.hasQR ? [(0, _preact.h)('span', {
+                'aria-hidden': 'true',
+                dangerouslySetInnerHTML: (0, _icon2.default)('check', {
+                  'stroke-width': 1
                 })
               }), (0, _preact.h)(
-                "span",
+                'span',
                 null,
-                "Done"
-              )] : "Get QR code"
+                'Done'
+              )] : 'Get QR code'
             )
           ),
           (0, _preact.h)(
-            "div",
-            { "class": "error " + (this.state.errorMessage && "show") },
+            'div',
+            { 'class': 'error ' + (this.state.errorMessage && 'show') },
             this.state.errorMessage
           )
         ),
-        (0, _preact.h)(_qrizeResult2.default, {
-          url: this.state.url,
-          onQRStatusUpdate: this.handleQRStatusUpdate.bind(this)
-        })
+        (0, _preact.h)(_qrizeResult2.default, { url: this.state.url, onQRStatusUpdate: this.handleQRStatusUpdate.bind(this) })
       );
     }
   }]);
@@ -2055,7 +2090,7 @@ if(false) {
 /* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(1)(undefined);
+exports = module.exports = __webpack_require__(1)(false);
 // imports
 
 
@@ -2078,7 +2113,7 @@ exports.push([module.i, "/* Coolors Exported Palette - coolors.co/ffffff-231f20-
 		exports["feather"] = factory();
 	else
 		root["feather"] = factory();
-})(this, function() {
+})(typeof self !== 'undefined' ? self : this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -2277,7 +2312,7 @@ module.exports = function (it, key) {
 /* 7 */
 /***/ (function(module, exports) {
 
-var core = module.exports = { version: '2.5.1' };
+var core = module.exports = { version: '2.5.3' };
 if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 
@@ -2517,7 +2552,7 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
   var VALUES_BUG = false;
   var proto = Base.prototype;
   var $native = proto[ITERATOR] || proto[FF_ITERATOR] || DEFAULT && proto[DEFAULT];
-  var $default = $native || getMethod(DEFAULT);
+  var $default = (!BUGGY && $native) || getMethod(DEFAULT);
   var $entries = DEFAULT ? !DEF_VALUES ? $default : getMethod('entries') : undefined;
   var $anyNative = NAME == 'Array' ? proto.entries || $native : $native;
   var methods, key, IteratorPrototype;
@@ -3132,9 +3167,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 		module.exports = classNames;
 	} else if (true) {
 		// register as 'classnames', consistent with npm package name
-		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
 			return classNames;
-		}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+		}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	} else {
 		window.classNames = classNames;
@@ -4006,7 +4041,7 @@ var $export = __webpack_require__(3);
 module.exports = function (COLLECTION) {
   $export($export.S, COLLECTION, { of: function of() {
     var length = arguments.length;
-    var A = Array(length);
+    var A = new Array(length);
     while (length--) A[length] = arguments[length];
     return new this(A);
   } });
@@ -4185,7 +4220,7 @@ module.exports = {"activity":"<polyline points=\"22 12 18 12 15 21 9 3 6 12 2 12
 /* 89 */
 /***/ (function(module, exports) {
 
-module.exports = {"activity":["pulse","health"],"airplay":["stream","cast"],"alert-circle":["warning"],"alert-octagon":["warning"],"alert-triangle":["warning"],"at-sign":["mention"],"aperture":["camera","photo"],"bell":["alarm","notification"],"bell-off":["alarm","notification"],"bluetooth":["wireless"],"book-open":["read"],"book":["read"],"bookmark":["read"],"briefcase":["work"],"clipboard":["copy"],"clock":["time","watch"],"cloud-drizzle":["weather"],"cloud-lightning":["weather"],"cloud-rain":["weather"],"cloud-snow":["weather"],"cloud":["weather"],"codepen":["logo"],"command":["keyboard"],"compass":["navigation","safari","travel"],"copy":["clone","duplicate"],"corner-down-left":["arrow"],"corner-down-right":["arrow"],"corner-left-down":["arrow"],"corner-left-up":["arrow"],"corner-right-down":["arrow"],"corner-right-up":["arrow"],"corner-up-left":["arrow"],"corner-up-right":["arrow"],"credit-card":["purchase","payment"],"crop":["photo"],"crosshair":["aim","target"],"disc":["album","cd","dvd","music"],"dollar-sign":["currency","money","payment"],"droplet":["water"],"edit":["pencil"],"edit-2":["pencil"],"edit-3":["pencil"],"eye":["view","watch"],"eye-off":["view","watch"],"external-link":["outbound"],"facebook":["logo"],"fast-forward":["music"],"film":["movie","video"],"folder-minus":["directory"],"folder-plus":["directory"],"folder":["directory"],"git-branch":["code","version control"],"git-commit":["code","version control"],"git-merge":["code","version control"],"git-pull-request":["code","version control"],"github":["logo","version control"],"gitlab":["logo","version control"],"global":["world","browser","language","translate"],"hard-drive":["computer","server"],"hash":["hashtag","number","pound"],"headphones":["music"],"heart":["like","love"],"help-circle":["question mark"],"home":["house"],"image":["picture"],"inbox":["email"],"instagram":["logo","camera"],"life-bouy":["help","life ring"],"linkedin":["logo"],"lock":["security","password"],"log-in":["sign in","arrow"],"log-out":["sign out","arrow"],"mail":["email"],"map-pin":["location","navigation","travel"],"map":["location","navigation","travel"],"maximize":["fullscreen"],"maximize-2":["fullscreen","arrows"],"menu":["bars","navigation","hamburger"],"message-circle":["comment"],"message-square":["comment"],"mic-off":["record"],"mic":["record"],"minimize":["exit fullscreen"],"minimize-2":["exit fullscreen","arrows"],"monitor":["tv"],"moon":["dark","night"],"more-horizontal":["ellipsis"],"more-vertical":["ellipsis"],"move":["arrows"],"navigation":["location","travel"],"navigation-2":["location","travel"],"octagon":["stop"],"package":["box"],"paperclip":["attachment"],"pause":["music","stop"],"pause-circle":["music","stop"],"play":["music","start"],"play-circle":["music","start"],"plus":["add","new"],"plus-circle":["add","new"],"plus-square":["add","new"],"pocket":["logo","save"],"power":["on","off"],"radio":["signal"],"rewind":["music"],"rss":["feed"],"save":["floppy disk"],"send":["message","mail","paper airplane"],"settings":["cog","edit","gear","preferences"],"shield":["security"],"shield-off":["security"],"shopping-bag":["ecommerce","cart","purchase","store"],"shopping-cart":["ecommerce","cart","purchase","store"],"shuffle":["music"],"skip-back":["music"],"skip-forward":["music"],"slash":["ban","no"],"sliders":["settings","controls"],"speaker":["music"],"star":["bookmark","favorite","like"],"sun":["brightness","weather","light"],"sunrise":["weather"],"sunset":["weather"],"tag":["label"],"target":["bullseye"],"terminal":["code","command line"],"thumbs-down":["dislike"],"thumbs-up":["like"],"toggle-left":["on","off","switch"],"toggle-right":["on","off","switch"],"trash":["garbage","delete","remove"],"trash-2":["garbage","delete","remove"],"triangle":["delta"],"truck":["delivery","van","shipping"],"twitter":["logo"],"umbrella":["rain","weather"],"video-off":["camera","movie","film"],"video":["camera","movie","film"],"voicemail":["phone"],"volume":["music","sound","mute"],"volume-1":["music","sound"],"volume-2":["music","sound"],"volume-x":["music","sound","mute"],"watch":["clock","time"],"wind":["weather"],"x-circle":["cancel","close","delete","remove","times"],"x-square":["cancel","close","delete","remove","times"],"x":["cancel","close","delete","remove","times"],"zap-off":["flash","camera","lightning"],"zap":["flash","camera","lightning"]}
+module.exports = {"activity":["pulse","health","action","motion"],"airplay":["stream","cast","mirroring"],"alert-circle":["warning"],"alert-octagon":["warning"],"alert-triangle":["warning"],"at-sign":["mention"],"award":["achievement","badge"],"aperture":["camera","photo"],"bell":["alarm","notification"],"bell-off":["alarm","notification","silent"],"bluetooth":["wireless"],"book-open":["read"],"book":["read","dictionary","booklet","magazine"],"bookmark":["read","clip","marker","tag"],"briefcase":["work","bag","baggage","folder"],"clipboard":["copy"],"clock":["time","watch","alarm"],"cloud-drizzle":["weather","shower"],"cloud-lightning":["weather","bolt"],"cloud-rain":["weather"],"cloud-snow":["weather","blizzard"],"cloud":["weather"],"codepen":["logo"],"command":["keyboard","cmd"],"compass":["navigation","safari","travel"],"copy":["clone","duplicate"],"corner-down-left":["arrow"],"corner-down-right":["arrow"],"corner-left-down":["arrow"],"corner-left-up":["arrow"],"corner-right-down":["arrow"],"corner-right-up":["arrow"],"corner-up-left":["arrow"],"corner-up-right":["arrow"],"credit-card":["purchase","payment","cc"],"crop":["photo","image"],"crosshair":["aim","target"],"database":["storage"],"delete":["remove"],"disc":["album","cd","dvd","music"],"dollar-sign":["currency","money","payment"],"droplet":["water"],"edit":["pencil","change"],"edit-2":["pencil","change"],"edit-3":["pencil","change"],"eye":["view","watch"],"eye-off":["view","watch"],"external-link":["outbound"],"facebook":["logo"],"fast-forward":["music"],"film":["movie","video"],"folder-minus":["directory"],"folder-plus":["directory"],"folder":["directory"],"git-branch":["code","version control"],"git-commit":["code","version control"],"git-merge":["code","version control"],"git-pull-request":["code","version control"],"github":["logo","version control"],"gitlab":["logo","version control"],"global":["world","browser","language","translate"],"hard-drive":["computer","server"],"hash":["hashtag","number","pound"],"headphones":["music","audio"],"heart":["like","love"],"help-circle":["question mark"],"home":["house"],"image":["picture"],"inbox":["email"],"instagram":["logo","camera"],"life-bouy":["help","life ring","support"],"linkedin":["logo"],"lock":["security","password"],"log-in":["sign in","arrow"],"log-out":["sign out","arrow"],"mail":["email"],"map-pin":["location","navigation","travel","marker"],"map":["location","navigation","travel"],"maximize":["fullscreen"],"maximize-2":["fullscreen","arrows"],"menu":["bars","navigation","hamburger"],"message-circle":["comment","chat"],"message-square":["comment","chat"],"mic-off":["record"],"mic":["record"],"minimize":["exit fullscreen"],"minimize-2":["exit fullscreen","arrows"],"monitor":["tv"],"moon":["dark","night"],"more-horizontal":["ellipsis"],"more-vertical":["ellipsis"],"move":["arrows"],"navigation":["location","travel"],"navigation-2":["location","travel"],"octagon":["stop"],"package":["box"],"paperclip":["attachment"],"pause":["music","stop"],"pause-circle":["music","stop"],"play":["music","start"],"play-circle":["music","start"],"plus":["add","new"],"plus-circle":["add","new"],"plus-square":["add","new"],"pocket":["logo","save"],"power":["on","off"],"radio":["signal"],"rewind":["music"],"rss":["feed","subscribe"],"save":["floppy disk"],"send":["message","mail","paper airplane"],"settings":["cog","edit","gear","preferences"],"shield":["security"],"shield-off":["security"],"shopping-bag":["ecommerce","cart","purchase","store"],"shopping-cart":["ecommerce","cart","purchase","store"],"shuffle":["music"],"skip-back":["music"],"skip-forward":["music"],"slash":["ban","no"],"sliders":["settings","controls"],"speaker":["music"],"star":["bookmark","favorite","like"],"sun":["brightness","weather","light"],"sunrise":["weather"],"sunset":["weather"],"tag":["label"],"target":["bullseye"],"terminal":["code","command line"],"thumbs-down":["dislike","bad"],"thumbs-up":["like","good"],"toggle-left":["on","off","switch"],"toggle-right":["on","off","switch"],"trash":["garbage","delete","remove"],"trash-2":["garbage","delete","remove"],"triangle":["delta"],"truck":["delivery","van","shipping"],"twitter":["logo"],"umbrella":["rain","weather"],"video-off":["camera","movie","film"],"video":["camera","movie","film"],"voicemail":["phone"],"volume":["music","sound","mute"],"volume-1":["music","sound"],"volume-2":["music","sound"],"volume-x":["music","sound","mute"],"watch":["clock","time"],"wind":["weather","air"],"x-circle":["cancel","close","delete","remove","times"],"x-square":["cancel","close","delete","remove","times"],"x":["cancel","close","delete","remove","times"],"zap-off":["flash","camera","lightning"],"zap":["flash","camera","lightning"]}
 
 /***/ }),
 /* 90 */
@@ -4344,7 +4379,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var REDIRECTOR_ENDPOINT = "https://qrize.me/<hash>";
+var REDIRECTOR_ENDPOINT = 'https://qrize.me/<hash>';
 
 // See: https://blog.qrstuff.com/2011/11/23/qr-code-minimum-size
 var QR_CODE_SIZES = [{ modules: 25, chars: 26 }, { modules: 30, chars: 49 }, { modules: 35, chars: 72 }, { modules: 40, chars: 98 }, { modules: 45, chars: 125 }, { modules: 50, chars: 163 }, { modules: 55, chars: 203 }, { modules: 60, chars: 249 }, { modules: 65, chars: 298 }, { modules: 70, chars: 351 }, { modules: 75, chars: 407 }, { modules: 80, chars: 468 }, { modules: 85, chars: 534 }, { modules: 90, chars: 601 }, { modules: 95, chars: 669 }, { modules: 100, chars: 739 }];
@@ -4375,20 +4410,20 @@ var QrizeResult = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (QrizeResult.__proto__ || Object.getPrototypeOf(QrizeResult)).call(this));
 
-    _this.state = { url: "", visible: false, time: null };
+    _this.state = { url: '', visible: false, time: null };
     return _this;
   }
 
   _createClass(QrizeResult, [{
-    key: "componentDidMount",
+    key: 'componentDidMount',
     value: function componentDidMount() {
       this.qrize = new _qrize2.default({
-        element: document.getElementById("qr-target"),
+        element: document.getElementById('qr-target'),
         cellSize: 5
       });
     }
   }, {
-    key: "componentWillReceiveProps",
+    key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
       if (nextProps.url === this.props.url) {
         return;
@@ -4401,7 +4436,7 @@ var QrizeResult = function (_Component) {
       }
     }
   }, {
-    key: "getQR",
+    key: 'getQR',
     value: function getQR(url) {
       var _this2 = this;
 
@@ -4411,8 +4446,8 @@ var QrizeResult = function (_Component) {
         onSuccess: function onSuccess(_ref2) {
           var hash = _ref2.hash;
 
-          console.debug("QR code has been built");
-          var redirectorUrl = REDIRECTOR_ENDPOINT.replace("<hash>", hash);
+          console.debug('QR code has been built');
+          var redirectorUrl = REDIRECTOR_ENDPOINT.replace('<hash>', hash);
           var time = Math.round(performance.now() - startTime);
           var minificationRatio = getQRCodeSizeFromUrl(_this2.props.url) / getQRCodeSizeFromUrl(redirectorUrl);
           _this2.setState({
@@ -4429,115 +4464,106 @@ var QrizeResult = function (_Component) {
       });
     }
   }, {
-    key: "render",
+    key: 'render',
     value: function render() {
       return (0, _preact.h)(
-        "div",
-        {
-          className: "qr-holder " + (this.state.visible ? "" : "hide"),
-          tabindex: "0"
-        },
+        'div',
+        { className: 'qr-holder ' + (this.state.visible ? '' : 'hide'), tabindex: '0' },
         (0, _preact.h)(
-          "figure",
+          'figure',
           null,
-          (0, _preact.h)("div", { id: "qr-target" }),
+          (0, _preact.h)('div', { id: 'qr-target' }),
           (0, _preact.h)(
-            "figcaption",
-            { className: "details" },
+            'figcaption',
+            { className: 'details' },
             (0, _preact.h)(
-              "dl",
-              { className: "details-group" },
+              'dl',
+              { className: 'details-group' },
               (0, _preact.h)(
-                "dt",
+                'dt',
                 null,
-                (0, _preact.h)("span", {
-                  className: "glyph",
-                  "aria-label": "Short link",
-                  dangerouslySetInnerHTML: (0, _icon2.default)("link-2", {
+                (0, _preact.h)('span', {
+                  className: 'glyph',
+                  'aria-label': 'Short link',
+                  dangerouslySetInnerHTML: (0, _icon2.default)('link-2', {
                     width: 16,
                     height: 16
                   })
                 })
               ),
               (0, _preact.h)(
-                "dd",
-                { title: "Short link that leads to the original url" },
+                'dd',
+                { title: 'Short link that leads to the original url' },
                 (0, _preact.h)(
-                  "a",
-                  {
-                    href: this.state.redirectorUrl,
-                    target: "_blank",
-                    rel: "noopener noreferrer"
-                  },
+                  'a',
+                  { href: this.state.redirectorUrl, target: '_blank', rel: 'noopener noreferrer' },
                   this.state.redirectorUrl
                 )
               )
             ),
             (0, _preact.h)(
-              "dl",
-              { className: "details-group" },
+              'dl',
+              { className: 'details-group' },
               (0, _preact.h)(
-                "dt",
+                'dt',
                 null,
-                (0, _preact.h)("span", {
-                  className: "glyph",
-                  "aria-label": "Time taken",
-                  dangerouslySetInnerHTML: (0, _icon2.default)("zap", {
+                (0, _preact.h)('span', {
+                  className: 'glyph',
+                  'aria-label': 'Time taken',
+                  dangerouslySetInnerHTML: (0, _icon2.default)('zap', {
                     width: 18,
                     height: 18
                   })
                 })
               ),
               (0, _preact.h)(
-                "dd",
-                {
-                  title: "It took " + this.state.time + "ms to shorten a link and render a QR code"
-                },
-                "Rendered in ",
+                'dd',
+                { title: 'It took ' + this.state.time + 'ms to shorten a link and render a QR code' },
+                'Rendered in ',
                 this.state.time,
-                "ms"
+                'ms'
               )
             ),
             (0, _preact.h)(
-              "dl",
-              { className: "details-group" },
+              'dl',
+              { className: 'details-group' },
               (0, _preact.h)(
-                "dt",
+                'dt',
                 null,
-                (0, _preact.h)("span", {
-                  className: "glyph",
-                  "aria-label": "Times smaller",
-                  dangerouslySetInnerHTML: (0, _icon2.default)("minimize-2", {
+                (0, _preact.h)('span', {
+                  className: 'glyph',
+                  'aria-label': 'Times smaller',
+                  dangerouslySetInnerHTML: (0, _icon2.default)('minimize-2', {
                     width: 18,
                     height: 18
                   })
                 })
               ),
               (0, _preact.h)(
-                "dd",
+                'dd',
                 {
-                  title: this.state.minificationRatio > 1 ? "Qrized QR code is " + this.state.minificationRatio + " times smaller than regular" : "The size of a minified QR code is the same as of regular"
+                  title: this.state.minificationRatio > 1 ? 'Qrized QR code is ' + this.state.minificationRatio + ' times smaller than regular' : 'The size of a minified QR code is the same as of regular'
                 },
                 this.state.minificationRatio,
-                "x smaller",
-                this.state.minificationRatio > 1 ? "" : " (try longer url)"
+                'x smaller',
+                this.state.minificationRatio > 1 ? '' : ' (try longer url)'
               )
             )
           )
         ),
         (0, _preact.h)(
-          "span",
-          { "class": "hint" },
-          (0, _preact.h)("span", {
-            dangerouslySetInnerHTML: (0, _icon2.default)("corner-left-up", {
+          'span',
+          { 'class': 'hint' },
+          (0, _preact.h)('span', {
+            dangerouslySetInnerHTML: (0, _icon2.default)('corner-left-up', {
               width: 18,
               height: 18
             })
           }),
           (0, _preact.h)(
-            "span",
+            'span',
             null,
-            "Hover to see details"
+            'Hover to see details'
           )
         )
       );
@@ -4591,7 +4617,7 @@ if(false) {
 /* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(1)(undefined);
+exports = module.exports = __webpack_require__(1)(false);
 // imports
 
 
@@ -4625,88 +4651,88 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var iconOptions = {
   width: 100,
   height: 100,
-  "stroke-width": 1
+  'stroke-width': 1
 };
 
 var WhyQrizeContainer = function WhyQrizeContainer() {
   return (0, _preact.h)(
-    "section",
-    { className: "section why-qrize" },
+    'section',
+    { className: 'section why-qrize' },
     (0, _preact.h)(
-      "h2",
+      'h2',
       null,
-      "Why qrize?"
+      'Why qrize?'
     ),
     (0, _preact.h)(
-      "ul",
+      'ul',
       null,
       (0, _preact.h)(
-        "li",
+        'li',
         null,
         (0, _preact.h)(
-          "header",
+          'header',
           null,
-          (0, _preact.h)("span", {
-            className: "glyph",
-            "aria-hidden": "true",
-            dangerouslySetInnerHTML: (0, _icon2.default)("minimize", iconOptions)
+          (0, _preact.h)('span', {
+            className: 'glyph',
+            'aria-hidden': 'true',
+            dangerouslySetInnerHTML: (0, _icon2.default)('minimize', iconOptions)
           }),
           (0, _preact.h)(
-            "h3",
+            'h3',
             null,
-            "Less space"
+            'Less space'
           )
         ),
         (0, _preact.h)(
-          "p",
+          'p',
           null,
-          "With QR codes taking less space on a page you are able to accomodate more useful information"
+          'With QR codes taking less space on a page you are able to accomodate more useful information'
         )
       ),
       (0, _preact.h)(
-        "li",
+        'li',
         null,
         (0, _preact.h)(
-          "header",
+          'header',
           null,
-          (0, _preact.h)("span", {
-            className: "glyph",
-            "aria-hidden": "true",
-            dangerouslySetInnerHTML: (0, _icon2.default)("smartphone", iconOptions)
+          (0, _preact.h)('span', {
+            className: 'glyph',
+            'aria-hidden': 'true',
+            dangerouslySetInnerHTML: (0, _icon2.default)('smartphone', iconOptions)
           }),
           (0, _preact.h)(
-            "h3",
+            'h3',
             null,
-            "Readers friendly"
+            'Readers friendly'
           )
         ),
         (0, _preact.h)(
-          "p",
+          'p',
           null,
-          "Qrize produces QR codes with constanly low density of dots (modules) making them more readable by mobile devices"
+          'Qrize produces QR codes with constanly low density of dots (modules) making them more readable by mobile devices'
         )
       ),
       (0, _preact.h)(
-        "li",
+        'li',
         null,
         (0, _preact.h)(
-          "header",
+          'header',
           null,
-          (0, _preact.h)("span", {
-            className: "glyph",
-            "aria-hidden": "true",
-            dangerouslySetInnerHTML: (0, _icon2.default)("star", iconOptions)
+          (0, _preact.h)('span', {
+            className: 'glyph',
+            'aria-hidden': 'true',
+            dangerouslySetInnerHTML: (0, _icon2.default)('star', iconOptions)
           }),
           (0, _preact.h)(
-            "h3",
+            'h3',
             null,
-            "Simply awesome"
+            'Simply awesome'
           )
         ),
         (0, _preact.h)(
-          "p",
+          'p',
           null,
-          "Given the possibility to make QR codes smaller, why would you keep them originaly sized?"
+          'Given the possibility to make QR codes smaller, why would you keep them originaly sized?'
         )
       )
     )
@@ -4750,7 +4776,7 @@ if(false) {
 /* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(1)(undefined);
+exports = module.exports = __webpack_require__(1)(false);
 // imports
 
 
@@ -4785,47 +4811,47 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var HowToUseContainer = function HowToUseContainer() {
   return (0, _preact.h)(
-    "section",
-    { className: "section how-to" },
+    'section',
+    { className: 'section how-to' },
     (0, _preact.h)(
-      "h2",
+      'h2',
       null,
-      "How to use?"
+      'How to use?'
     ),
     (0, _preact.h)(
-      "p",
+      'p',
       null,
-      "First, include qrize in your application. Qrize is available on npm:"
+      'First, include qrize in your application. Qrize is available on npm:'
     ),
     (0, _preact.h)(
       _prismCode2.default,
-      { className: "language-sh" },
-      "\n        npm install --save qrize\n      "
+      { className: 'language-sh' },
+      '\n        npm install --save qrize\n      '
     ),
     (0, _preact.h)(
-      "p",
+      'p',
       null,
-      "and CDN:"
+      'and CDN:'
     ),
     (0, _preact.h)(
       _prismCode2.default,
-      { className: "language-markup" },
-      "\n        <script src=\"https://unpkg.com/qrize/dist/qrize.umd.js\"></script>\n      "
+      { className: 'language-markup' },
+      '\n        <script src="https://unpkg.com/qrize/dist/qrize.umd.js"></script>\n      '
     ),
     (0, _preact.h)(
-      "p",
+      'p',
       null,
-      "Then include following script somewhere:"
+      'Then include following script somewhere:'
     ),
     (0, _preact.h)(
       _prismCode2.default,
-      { className: "language-javascript" },
-      "\n        import Qrize from \"qrize\";\n\n        const qrize = new Qrize({\n          element: document.getElementById(\"qr-target\")\n        });\n        qrize.createImg({ url: \"http://example.com\" });\n      "
+      { className: 'language-javascript' },
+      '\n        import Qrize from "qrize";\n\n        const qrize = new Qrize({\n          element: document.getElementById("qr-target")\n        });\n        qrize.createImg({ url: "http://example.com" });\n      '
     ),
     (0, _preact.h)(
-      "p",
+      'p',
       null,
-      "That's it. Now an element wih \"qr-target\" id contains tiny QR code that leads to the url you specified."
+      'That\'s it. Now an element wih "qr-target" id contains tiny QR code that leads to the url you specified.'
     )
   );
 };
@@ -4873,22 +4899,22 @@ var PrismCode = function (_Component) {
   }
 
   _createClass(PrismCode, [{
-    key: "componentDidMount",
+    key: 'componentDidMount',
     value: function componentDidMount() {
       this.hightlight();
     }
   }, {
-    key: "componentDidUpdate",
+    key: 'componentDidUpdate',
     value: function componentDidUpdate() {
       this.hightlight();
     }
   }, {
-    key: "hightlight",
+    key: 'hightlight',
     value: function hightlight() {
       _prismjs2.default.highlightElement(this.domNode);
     }
   }, {
-    key: "render",
+    key: 'render',
     value: function render() {
       var _this2 = this;
 
@@ -4898,10 +4924,10 @@ var PrismCode = function (_Component) {
 
 
       return (0, _preact.h)(
-        "pre",
-        { "class": "normalize-whitespace" },
+        'pre',
+        { 'class': 'normalize-whitespace' },
         (0, _preact.h)(
-          "code",
+          'code',
           {
             ref: function ref(domNode) {
               _this2.domNode = domNode;
@@ -5826,7 +5852,7 @@ if(false) {
 /* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(1)(undefined);
+exports = module.exports = __webpack_require__(1)(false);
 // imports
 
 
@@ -6054,40 +6080,36 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var GitHubContainer = function GitHubContainer() {
   return (0, _preact.h)(
-    "section",
-    { className: "section github" },
+    'section',
+    { className: 'section github' },
     (0, _preact.h)(
-      "header",
+      'header',
       null,
-      (0, _preact.h)("span", {
-        className: "glyph",
-        dangerouslySetInnerHTML: (0, _icon2.default)("github", {
+      (0, _preact.h)('span', {
+        className: 'glyph',
+        dangerouslySetInnerHTML: (0, _icon2.default)('github', {
           width: 32,
           height: 32
         })
       }),
       (0, _preact.h)(
-        "h2",
+        'h2',
         null,
-        "GitHub"
+        'GitHub'
       )
     ),
     (0, _preact.h)(
-      "p",
+      'p',
       null,
-      "Go to",
-      " ",
+      'Go to',
+      ' ',
       (0, _preact.h)(
-        "a",
-        {
-          href: "https://github.com/qrize/qrize",
-          target: "_blank",
-          rel: "noopener noreferrer"
-        },
-        "https://github.com/qrize/qrize"
+        'a',
+        { href: 'https://github.com/qrize/qrize', target: '_blank', rel: 'noopener noreferrer' },
+        'https://github.com/qrize/qrize'
       ),
-      " ",
-      "if you need more details or have a question."
+      ' ',
+      'if you need more details or have a question.'
     )
   );
 };
@@ -6129,7 +6151,7 @@ if(false) {
 /* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(1)(undefined);
+exports = module.exports = __webpack_require__(1)(false);
 // imports
 
 
@@ -6162,38 +6184,38 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var FooterContainer = function FooterContainer() {
   return (0, _preact.h)(
-    "footer",
-    { "class": "footer" },
+    'footer',
+    { 'class': 'footer' },
     (0, _preact.h)(
-      "section",
-      { className: "section" },
+      'section',
+      { className: 'section' },
       (0, _preact.h)(
-        "p",
+        'p',
         null,
-        "Copyright \xA9 ",
+        'Copyright \xA9 ',
         new Date().getFullYear(),
-        " ",
+        ' ',
         (0, _preact.h)(
-          "a",
-          { href: "https://goliney.com", target: "_blank", rel: "noopener noreferrer" },
-          "Sergey Goliney"
+          'a',
+          { href: 'https://goliney.com', target: '_blank', rel: 'noopener noreferrer' },
+          'Sergey Goliney'
         )
       ),
       (0, _preact.h)(
-        "p",
+        'p',
         null,
-        "QR Code is a registered trademark of",
-        " ",
+        'QR Code is a registered trademark of',
+        ' ',
         (0, _preact.h)(
-          "a",
+          'a',
           {
-            href: "https://www.qrcode.com/en/faq.html#patentH2Title",
-            target: "_blank",
-            rel: "noopener noreferrer"
+            href: 'https://www.qrcode.com/en/faq.html#patentH2Title',
+            target: '_blank',
+            rel: 'noopener noreferrer'
           },
-          "DENSO WAVE INCORPORATED"
+          'DENSO WAVE INCORPORATED'
         ),
-        "."
+        '.'
       )
     )
   );
@@ -6236,7 +6258,7 @@ if(false) {
 /* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(1)(undefined);
+exports = module.exports = __webpack_require__(1)(false);
 // imports
 
 
