@@ -9,7 +9,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -67,16 +68,16 @@ strong {
 }
 
 button,
-input[type=button],
-input[type=submit] {
+input[type='button'],
+input[type='submit'] {
   // reset button styles
-  margin:0;
-  border:0;
+  margin: 0;
+  border: 0;
   padding: 0;
-  display:inline-block;
-  vertical-align:middle;
-  white-space:normal;
-  line-height:1;
+  display: inline-block;
+  vertical-align: middle;
+  white-space: normal;
+  line-height: 1;
   outline: none;
   border-radius: 0;
   background: transparent;

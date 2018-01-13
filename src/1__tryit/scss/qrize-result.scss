@@ -23,7 +23,9 @@
     overflow: hidden;
     transition: $trans;
 
-    dl, dt, dd {
+    dl,
+    dt,
+    dd {
       margin: 0;
     }
 

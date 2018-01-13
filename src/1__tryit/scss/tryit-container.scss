@@ -1,4 +1,4 @@
-@import '../..//scss/variables.scss';
+@import '../../scss/variables.scss';
 
 .try-it {
   width: 100%;
@@ -7,9 +7,13 @@
   align-items: center;
   color: $base;
   // https://uigradients.com
-  background: #2c6e82;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #28638a, #2e7779);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #28638a, #2e7779); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #2c6e82; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #28638a, #2e7779); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #28638a,
+    #2e7779
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   .title {
     margin-bottom: 0;
@@ -19,4 +23,3 @@
     text-align: center;
   }
 }
-

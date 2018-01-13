@@ -1,4 +1,4 @@
-@import '../..//scss/variables.scss';
+@import '../../scss/variables.scss';
 
 form.tryit-form {
   text-align: center;
@@ -29,16 +29,20 @@ form.tryit-form {
       background-color: fade-out($base, 0.8);
       transition: $trans;
 
-      &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      &::-webkit-input-placeholder {
+        /* Chrome/Opera/Safari */
         color: fade-out($base, 0.35);
       }
-      &::-moz-placeholder { /* Firefox 19+ */
+      &::-moz-placeholder {
+        /* Firefox 19+ */
         color: fade-out($base, 0.35);
       }
-      &:-ms-input-placeholder { /* IE 10+ */
+      &:-ms-input-placeholder {
+        /* IE 10+ */
         color: fade-out($base, 0.35);
       }
-      &:-moz-placeholder { /* Firefox 18- */
+      &:-moz-placeholder {
+        /* Firefox 18- */
         color: fade-out($base, 0.5);
       }
 
@@ -134,7 +138,7 @@ form.tryit-form {
       }
 
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         bottom: 100%;
         left: 50%;
@@ -148,4 +152,3 @@ form.tryit-form {
     }
   }
 }
-

@@ -5,13 +5,14 @@
     "node": ">=6"
   },
   "scripts": {
-    "build": "./node_modules/webpack/bin/webpack.js",
+    "build": "npm-run-all test bundle",
+    "bundle": "./node_modules/webpack/bin/webpack.js",
     "dev": "./node_modules/.bin/webpack-dev-server",
     "prettier": "prettier --write src/**/*.js test/**/*.js",
     "eslint": "eslint src/**/*.js test/**/*.js",
     "eslint-check": "eslint --print-config .eslintrc.json | eslint-config-prettier-check",
-    "pretest": "npm-run-all eslint-check eslint",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "stylelint": "stylelint 'src/**/*.scss'",
+    "test": "npm-run-all eslint-check eslint stylelint"
   },
   "author": "name <email>",
   "license": "MIT",
@@ -44,6 +45,8 @@
     "prettier-eslint": "8.7.4",
     "sass-loader": "6.0.6",
     "style-loader": "0.19.1",
+    "stylelint": "8.4.0",
+    "stylelint-scss": "2.2.0",
     "webpack": "3.10.0",
     "webpack-dev-server": "2.10.1"
   }
