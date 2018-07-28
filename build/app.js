@@ -1794,7 +1794,7 @@ var TryItContainer = function TryItContainer() {
             null,
             'URL shortener'
           ),
-          ' got married.'
+          ' got married \uD83C\uDF89'
         ),
         (0, _preact.h)(
           'p',
